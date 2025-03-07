@@ -1,5 +1,5 @@
 function createVacFormTemplate (vacName, conditions, address) {
-    const {salary, expFrom, expTo} = conditions;
+    const {salary, exp} = conditions;
     const {map, under} = address;
 
     return (`
@@ -10,64 +10,23 @@ function createVacFormTemplate (vacName, conditions, address) {
                             <div class="vac-date__post">
                                 <h3>Дата публикации: 23.01.2023</h3>
                             </div>
-                            <h2 class="vac-name">Backend-разработчик</h2>
+                            <h2 class="vac-name">${vacName}</h2>
                             <div class="vac-address">
                                 <img src="" alt="point-img">
-                                <h3>Москва, Походный проезд, 3с1</h3>
+                                <h3>${map}</h3>
                             </div>
                         </div>
                         <div class="right-side__info">
-                            <div class="vac-salary">от 70 000 на руки</div>
-                            <div class="vac-exp">Требуемый опыт: от 1 до 3 лет</div>
+                            <div class="vac-salary">${salary}</div>
+                            <div class="vac-exp">Требуемый опыт: ${exp}</div>
                             <div class="vac-address__under">
                                 <img src="" alt="undeground-icon">
-                                <h3>Сходненская, Трикотажная и Волоколамская</h3>
+                                <h3>${under}</h3>
                             </div>
                         </div>
                         <button class="edit-form__button"></button>
                     </li>
-                    <li class="vac-form__item">
-                        <div class="left-side__info">
-                            <div class="vac-date__post">
-                                <h3>Дата публикации: 23.01.2023</h3>
-                            </div>
-                            <h2 class="vac-name">Backend-разработчик</h2>
-                            <div class="vac-address">
-                                <img src="" alt="point-img">
-                                <h3>Москва, Походный проезд, 3с1</h3>
-                            </div>
-                        </div>
-                        <div class="right-side__info">
-                            <div class="vac-salary">от 70 000 на руки</div>
-                            <div class="vac-exp">Требуемый опыт: от 1 до 3 лет</div>
-                            <div class="vac-address__under">
-                                <img src="" alt="undeground-icon">
-                                <h3>Сходненская, Трикотажная и Волоколамская</h3>
-                            </div>
-                        </div>
-                        <button class="edit-form__button"></button>
-                    </li>
-                    <li class="vac-form__item">
-                        <div class="left-side__info">
-                            <div class="vac-date__post">
-                                <h3>Дата публикации: 23.01.2023</h3>
-                            </div>
-                            <h2 class="vac-name">Backend-разработчик</h2>
-                            <div class="vac-address">
-                                <img src="" alt="point-img">
-                                <h3>Москва, Походный проезд, 3с1</h3>
-                            </div>
-                        </div>
-                        <div class="right-side__info">
-                            <div class="vac-salary">от 70 000 на руки</div>
-                            <div class="vac-exp">Требуемый опыт: от 1 до 3 лет</div>
-                            <div class="vac-address__under">
-                                <img src="" alt="undeground-icon">
-                                <h3>Сходненская, Трикотажная и Волоколамская</h3>
-                            </div>
-                        </div>
-                        <button class="edit-form__button"></button>
-                    </li>
+                    <!-- Repeat for other items as needed -->
                 </ul>
         `);
 }
