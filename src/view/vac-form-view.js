@@ -1,32 +1,42 @@
-function createVacFormTemplate (vacName, conditions, address) {
-    const {salary, exp} = conditions;
-    const {map, under} = address;
+import React from 'react';
 
-    return (`
-        <h1>Заявки на размещение вакансий</h1>
-        <ul class="vac-form__list">
-                    <li class="vac-form__item">
-                        <div class="left-side__info">
-                            <div class="vac-date__post">
-                                <h3>Дата публикации: 23.01.2023</h3>
-                            </div>
-                            <h2 class="vac-name">${vacName}</h2>
-                            <div class="vac-address">
-                                <img src="" alt="point-img">
-                                <h3>${map}</h3>
-                            </div>
-                        </div>
-                        <div class="right-side__info">
-                            <div class="vac-salary">${salary}</div>
-                            <div class="vac-exp">Требуемый опыт: ${exp}</div>
-                            <div class="vac-address__under">
-                                <img src="" alt="undeground-icon">
-                                <h3>${under}</h3>
-                            </div>
-                        </div>
-                        <button class="edit-form__button"></button>
-                    </li>
-                    <!-- Repeat for other items as needed -->
-                </ul>
-        `);
-}
+const VacForm = ({ vacancies = [], onEditClick }) => {
+  if (vacancies.length === 0) {
+    return <p>Нет вакансий</p>;
+  }
+
+  return (
+    <div>
+      <h1>Заявки на размещение вакансий</h1>
+      <ul className="vac-form__list">
+        {vacancies.map((vacancy) => {
+          const { name, salary, experience, address, underground, publicationDate, id } = vacancy;
+
+          return (
+            <li className="vac-form__item" key={id}>
+              <div className="left-side__info">
+                <div className="vac-date__post">
+                  <h4>Дата публикации: {publicationDate}</h4>
+                </div>
+                <h2 className="vac-name">{name}</h2>
+                <div className="vac-address">
+                  <h4>{address}</h4>
+                </div>
+              </div>
+              <div className="right-side__info">
+                <div className="vac-salary">{salary}</div>
+                <div className="vac-exp">Требуемый опыт: {experience}</div>
+                <div className="vac-address__under">
+                  <h4>{underground}</h4>
+                </div>
+              </div>
+              <button className="edit-form__button" onClick={() => onEditClick(vacancy)}>Редактировать</button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+export default VacForm;

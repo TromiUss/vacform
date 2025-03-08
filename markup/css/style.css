@@ -15,12 +15,11 @@ html {
     background-color: #4C73E3;
 }
 
-.vac-task {
+.vac-form__item {
   background-color: #f8f8f8;
 }
 
 .add-vac__wrapper {
-  background-color: #FFFFFF;
   margin: 150px;
   padding: 60px;
 }

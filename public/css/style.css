@@ -1,16 +1,55 @@
 html {
-    height: 100%; }
-  
-  body {
-    padding: 0;
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent; }
-  
-  main {
-    display: block; }
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  background-color: #fffbfb;
+}
+
+main {
+  display: block;
+}
 
 .page-header {
-    background-color: #4C73E3;
+  background-color: #4C73E3;
+}
+
+.vac-form__item {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  height: 146px;
+}
+
+.left-side__info {
+
+  flex: 1;
+}
+
+.right-side__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-grow: 0;
+  gap: 20px;
+  margin-right: ;
+}
+
+.vac-salary,
+.vac-exp,
+.vac-address__under {
+  margin-bottom: 5px;
+}
+
+.vac-salary,
+.vac-exp,
+.vac-address__under h4 {
+  margin: 0;
+  padding: 0;
 }
