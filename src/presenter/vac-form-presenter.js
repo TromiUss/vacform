@@ -12,6 +12,12 @@ const VacFormPresenter = ({ mode = 'view', vacancyModel, selectedVacancy, onEdit
     salary: '',
     address: '',
     under: '',
+    date: '',
+    PlanDate: '',
+    gender: '',
+    skills: '',
+    gr: '',
+    employment_type: '',
   });
 
   useEffect(() => {
@@ -20,12 +26,19 @@ const VacFormPresenter = ({ mode = 'view', vacancyModel, selectedVacancy, onEdit
 
   useEffect(() => {
     if (mode === 'edit' && selectedVacancy) {
+      console.log("Выбрана вакансия для редактирования:", selectedVacancy);
       setInitialValues({
         VacName: selectedVacancy.name || '',
         Ot: selectedVacancy.department || '',
         salary: selectedVacancy.salary || '',
         address: selectedVacancy.address || '',
-        under: selectedVacancy.under || '',
+        under: selectedVacancy.underground || '',
+        date: selectedVacancy.date || '',
+        PlanDate: selectedVacancy.PlanDate || '',
+        gender: selectedVacancy.gender || '',
+        skills: selectedVacancy.experience || '',
+        gr: selectedVacancy.gr || '',
+        employment_type: selectedVacancy.employment_type || '',
       });
     }
   }, [mode, selectedVacancy]);
@@ -41,7 +54,9 @@ const VacFormPresenter = ({ mode = 'view', vacancyModel, selectedVacancy, onEdit
       setVacancies(vacancyModel.getVacancies());
       console.log('Добавлена новая вакансия:', values);
     } else if (mode === 'edit') {
+      console.log("До обновления:", vacancyModel.getVacancies());
       vacancyModel.updateVacancy(selectedVacancy.id, values);
+      console.log("После обновления:", vacancyModel.getVacancies());
       setVacancies(vacancyModel.getVacancies());
       console.log('Отредактирована вакансия:', values);
     }
@@ -50,7 +65,7 @@ const VacFormPresenter = ({ mode = 'view', vacancyModel, selectedVacancy, onEdit
   return (
     <>
       {mode === 'add' && <VacAddView initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} />}
-      {mode === 'edit' && <VacEditView initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} />}
+      {mode === 'edit' && <VacEditView key={selectedVacancy?.id} initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} />}
       {mode === 'view' && <VacForm vacancies={vacancies} onEditClick={onEditClick} />}
     </>
   );

@@ -14,7 +14,6 @@ ol[class] {
 }
 
 body,
-h1,
 h2,
 h3,
 h4,
@@ -95,6 +94,7 @@ body {
 
 main {
   display: block;
+  margin: 0 10%;
 }
 
 .page-header {
@@ -107,13 +107,20 @@ main {
   margin: 0 10% 0 10%;
 }
 
+.title-text {
+  margin-bottom: 20%;
+}
+
 .vac-form__item {
-  margin: 0 10% 20px 10%;
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;
 
   height: clamp(100px, 40vh, 200px);
+}
+
+.vac-form__item:not(:last-child) {
+  margin-bottom: 20px;
 }
 
 .left-side__info {
