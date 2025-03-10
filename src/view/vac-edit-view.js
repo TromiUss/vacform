@@ -14,13 +14,20 @@ const validationSchema = Yup.object({
   employment_type: Yup.string().required('Обязательное поле')
 });
 
-const VacEditView = ({ initialValues, onSubmit }) => {
+const VacEditView = ({ initialValues, onSubmit, onCancel }) => {
   return (
     <div>
       <h1>Форма редактирования заявки</h1>
-      <Formik enableReinitialize initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        <Form className="edit-vac__form">
-          <fieldset>
+      <Formik enableReinitialize
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          onSubmit(values);
+          setSubmitting(false);
+          onSuccess();
+        }}>
+        <Form id="vacancyForm" className="add-vac__form">
+          <fieldset className="form-row-group">
             <label htmlFor="VacName">Наименование вакансии</label>
             <Field type="text" id="VacName" name="VacName" />
             <ErrorMessage name="VacName" component="div" />
@@ -29,7 +36,7 @@ const VacEditView = ({ initialValues, onSubmit }) => {
             <Field type="text" id="Ot" name="Ot" />
             <ErrorMessage name="Ot" component="div" />
           </fieldset>
-          <fieldset>
+          <fieldset className="form-row-group">
             <label htmlFor="date">Дата открытия</label>
             <Field type="date" id="date" name="date" />
             <ErrorMessage name="date" component="div" />
@@ -40,28 +47,36 @@ const VacEditView = ({ initialValues, onSubmit }) => {
           </fieldset>
           <fieldset>
             <legend>Пол</legend>
-            <label>
-              <Field type="radio" name="gender" value="male" /> Мужской
-            </label>
-            <label>
-              <Field type="radio" name="gender" value="female" /> Женский
-            </label>
+            <div className="radio-item">
+              <Field type="radio" name="gender" value="male" />
+              <span>Мужской</span>
+            </div>
+            <div className="radio-item">
+              <Field type="radio" name="gender" value="female" />
+              <span>Женский</span>
+            </div>
             <ErrorMessage name="gender" component="div" />
           </fieldset>
-          <fieldset>
+          <fieldset className="form-row-group">
             <legend>Зарплата</legend>
-            <label>
-              <Field type="radio" name="salary" value="net" /> На руки
-            </label>
-            <label>
-              <Field type="radio" name="salary" value="gross" /> До вычета налога
-            </label>
-            <label htmlFor="salaryFrom">От</label>
-            <Field type="text" id="salaryFrom" name="salaryFrom" />
-            <label htmlFor="salaryTo">До</label>
-            <Field type="text" id="salaryTo" name="salaryTo" />
+            <div className="radio-item">
+              <Field type="radio" name="salary" value="net" />
+              <span>На руки</span>
+            </div>
+            <div className="radio-item">
+              <Field type="radio" name="salary" value="gross" />
+              <span>До вычета налога</span>
+            </div>
+            <div className="input-group">
+              <label htmlFor="salaryFrom">От</label>
+              <Field type="text" id="salaryFrom" name="salaryFrom" />
+            </div>
+            <div className="input-group">
+              <label htmlFor="salaryTo">До</label>
+              <Field type="text" id="salaryTo" name="salaryTo" />
+            </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="form-row-group">
             <label htmlFor="address">Адрес</label>
             <Field type="text" id="address" name="address" />
             <ErrorMessage name="address" component="div" />
@@ -69,7 +84,7 @@ const VacEditView = ({ initialValues, onSubmit }) => {
             <label htmlFor="under">Станция метро, МЦД</label>
             <Field type="text" id="under" name="under" />
           </fieldset>
-          <fieldset>
+          <fieldset className="form-row-group">
             <label htmlFor="skills">Опыт работы</label>
             <Field type="text" id="skills" name="skills" />
             <ErrorMessage name="skills" component="div" />
@@ -78,22 +93,26 @@ const VacEditView = ({ initialValues, onSubmit }) => {
             <Field type="text" id="gr" name="gr" />
             <ErrorMessage name="gr" component="div" />
           </fieldset>
-          <fieldset>
+          <fieldset className="form-row-group">
             <legend>Тип занятости</legend>
-            <label>
-              <Field type="radio" name="employment_type" value="full_time" /> Полная занятость
-            </label>
-            <label>
-              <Field type="radio" name="employment_type" value="part_time" /> Частичная занятость
-            </label>
-            <label>
-              <Field type="radio" name="employment_type" value="internship" /> Стажировка
-            </label>
+            <div className="radio-item">
+              <Field type="radio" name="employment_type" value="full_time" />
+              <span>Полная занятость</span>
+            </div>
+            <div className="radio-item">
+              <Field type="radio" name="employment_type" value="part_time" />
+              <span>Частичная занятость</span>
+            </div>
+            <div className="radio-item">
+              <Field type="radio" name="employment_type" value="internship" />
+              <span>Стажировка</span>
+            </div>
             <ErrorMessage name="employment_type" component="div" />
           </fieldset>
-          <button type="submit">Сохранить изменения</button>
         </Form>
       </Formik>
+      <button type="submit" form="vacancyForm" className='save-button'>Сохранить</button>
+      <button type="button" onClick={onCancel} className="cancle-button">Отменить</button>
     </div>
   );
 };

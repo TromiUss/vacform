@@ -4,7 +4,12 @@ import VacEditView from '../view/vac-edit-view';
 import VacForm from '../view/vac-form-view';
 import * as Yup from 'yup';
 
-const VacFormPresenter = ({ mode = 'view', vacancyModel, selectedVacancy, onEditClick }) => {
+const VacFormPresenter = ({
+  mode = 'view',
+  vacancyModel,
+  selectedVacancy,
+  onEditClick,
+  setMode }) => {
   const [vacancies, setVacancies] = useState([]);
   const [initialValues, setInitialValues] = useState({
     VacName: '',
@@ -29,7 +34,6 @@ const VacFormPresenter = ({ mode = 'view', vacancyModel, selectedVacancy, onEdit
       console.log("Выбрана вакансия для редактирования:", selectedVacancy);
       setInitialValues({
         VacName: selectedVacancy.name || '',
-        Ot: selectedVacancy.department || '',
         salary: selectedVacancy.salary || '',
         address: selectedVacancy.address || '',
         under: selectedVacancy.underground || '',
@@ -48,25 +52,43 @@ const VacFormPresenter = ({ mode = 'view', vacancyModel, selectedVacancy, onEdit
     Ot: Yup.string().required('Обязательное поле'),
   });
 
-  const handleSubmit = useCallback((values) => {
+  const handleSubmit = useCallback(async (values) => {
     if (mode === 'add') {
-      vacancyModel.addVacancy(values);
+      await vacancyModel.addVacancy(values);
       setVacancies(vacancyModel.getVacancies());
       console.log('Добавлена новая вакансия:', values);
     } else if (mode === 'edit') {
-      console.log("До обновления:", vacancyModel.getVacancies());
-      vacancyModel.updateVacancy(selectedVacancy.id, values);
-      console.log("После обновления:", vacancyModel.getVacancies());
+      await vacancyModel.updateVacancy(selectedVacancy.id, values);
       setVacancies(vacancyModel.getVacancies());
       console.log('Отредактирована вакансия:', values);
     }
   }, [mode, selectedVacancy, vacancyModel]);
-
   return (
     <>
-      {mode === 'add' && <VacAddView initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} />}
-      {mode === 'edit' && <VacEditView key={selectedVacancy?.id} initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} />}
-      {mode === 'view' && <VacForm vacancies={vacancies} onEditClick={onEditClick} />}
+      {mode === 'add' && (
+        <VacAddView
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+          onSuccess={() => {
+            console.log('Переключаемся в режим просмотра');
+            setMode('view');
+          }}
+          onCancel={() => setMode('view')}
+        />
+      )}
+      {mode === 'edit' && (
+        <VacEditView
+          key={selectedVacancy?.id}
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+          onCancel={() => setMode('view')}
+        />
+      )}
+      {mode === 'view' && (
+        <VacForm vacancies={vacancies} onEditClick={onEditClick} />
+      )}
     </>
   );
 };

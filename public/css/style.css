@@ -88,7 +88,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
-  background-color: #fdf6f6;
+  background-color: #F3F7F8;
   font-size: clamp(10px, 1.5vw, 24px);
 }
 
@@ -107,20 +107,17 @@ main {
   margin: 0 10% 0 10%;
 }
 
-.title-text {
-  margin-bottom: 20%;
+h1 {
+  color: #4C73E3;
 }
 
 .vac-form__item {
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;
-
-  height: clamp(100px, 40vh, 200px);
-}
-
-.vac-form__item:not(:last-child) {
   margin-bottom: 20px;
+  height: clamp(100px, 40vh, 200px);
+  border-radius: 16px;
 }
 
 .left-side__info {
@@ -150,4 +147,152 @@ main {
 .vac-address__under h4 {
   margin: 0;
   padding: 0;
+}
+
+.vac-form__item {
+  position: relative;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  height: clamp(100px, 40vh, 200px);
+  padding: 15px;
+}
+
+.edit-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1;
+  transition: opacity 0.2s;
+}
+
+.edit-button:hover {
+  opacity: 0.7;
+}
+
+.edit-button svg {
+  fill: #4C73E3; 
+}
+
+.add-vac__form fieldset,
+.edit-vac__form fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.add-vac__form legend,
+.edit-vac__form legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: block; 
+}
+
+.add-vac__form,
+.edit-vac__form {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.add-vac__form label,
+.edit-vac__form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-vac__form fieldset > * + *,
+.edit-vac__form fieldset > * + * {
+  margin-top: 15px;
+}
+
+.add-vac__form [type="radio"],
+.edit-vac__form [type="radio"] {
+  margin-right: 8px;
+  color: #4C73E3;
+}
+
+.add-vac__form fieldset,
+.edit-vac__form fieldset {
+  margin-bottom: 25px;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.save-button[type="submit"],
+.send-button[type="submit"],
+.inner-button[type="button"],
+.cancle-button[type="button"] {
+  width: 250px;
+  background: #4C73E3;
+  color: white;
+  padding: 16px;
+  border: 1px;
+  border-radius: 26px;
+  cursor: pointer;
+}
+
+.page-body__container div button:not(:last-child) {
+  margin-right: 20px;
+}
+
+.list-button, .new-button {
+  background-color: #4C73E3;
+  color: #ffffff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.list-button:hover, .new-button:hover {
+  background: #88A4F5;
+}
+
+.save-button[type="submit"]:hover,
+.send-button[type="submit"]:hover,
+.list-button[type="submit"]:hover,
+.new-button[type="submit"]:hover,
+.inner-button[type="button"]:hover,
+.cancle-button[type="button"]:hover {
+  background: #3a5ab5;
+}
+
+.form-row-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 12px 20px;
+  border: 1px solid #DEE4F0;
+  border-radius: 16px;
+  width: 275px;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.9em;
+  margin-top: 5px;
 }

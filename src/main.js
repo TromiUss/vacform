@@ -18,26 +18,30 @@ const App = () => {
     setMode('edit');
   };
 
-  useEffect(() => {
-    const viewButton = document.getElementById('viewBtn');
-    const addButton = document.getElementById('addBtn');
-
-    viewButton.addEventListener('click', handleViewClick);
-    addButton.addEventListener('click', handleAddClick);
-
-    return () => {
-      viewButton.removeEventListener('click', handleViewClick);
-      addButton.removeEventListener('click', handleAddClick);
-    };
-  }, []);
-
   return (
-    <VacFormPresenter
-      mode={mode}
-      vacancyModel={vacancyModel}
-      selectedVacancy={selectedVacancy}
-      onEditClick={handleEditClick}
-    />
+    <>
+      <header className="page-header">
+        <div className="page-header__container">
+          <img className="page-header__logo" src="" width="45" height="45" alt="CLogo" />
+          <div className="vac-link">
+            <button onClick={handleViewClick} className="list-button">Все заявки</button>
+            <button onClick={handleAddClick} className="new-button">Создание заявки</button>
+          </div>
+        </div>
+      </header>
+
+      <main className="page-main">
+        <div className="page-body__container">
+          <VacFormPresenter
+            mode={mode}
+            vacancyModel={vacancyModel}
+            selectedVacancy={selectedVacancy}
+            onEditClick={handleEditClick}
+            setMode={setMode}
+          />
+        </div>
+      </main>
+    </>
   );
 };
 

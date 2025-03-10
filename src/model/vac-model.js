@@ -16,7 +16,9 @@ class VacancyModel {
     addVacancy(vacancyData) {
         const newVacancy = {
             id: this.vacancies.length + 1,
-            ...vacancyData,
+            name: vacancyData.VacName,
+            salary: vacancyData.salary,
+            experience: vacancyData.skills,
         };
         this.vacancies.push(newVacancy);
     }
@@ -28,7 +30,7 @@ class VacancyModel {
             this.vacancies = [...this.vacancies];
         }
     }
-    
+
 
     deleteVacancy(id) {
         this.vacancies = this.vacancies.filter(vacancy => vacancy.id !== id);
