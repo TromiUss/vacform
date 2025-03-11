@@ -13,7 +13,7 @@ module.exports = {
         template: 'public/index.html',
     }),],
       module: {
-        rules: [ // Добавляем лоадеры
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,

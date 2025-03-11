@@ -1,15 +1,14 @@
 {
-  "name": "vacform",
+  "name": "vacancy-creation-form",
   "version": "1.0.0",
-  "description": "vacancy creation form",
+  "description": "Нормальное описание + !! добавить конфиг еслинтера", 
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src/",
+    "lint": "eslint src/", 
     "build": "npx webpack --mode production",
     "start": "webpack serve --mode development --open"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Nikita Markov",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.26.9",

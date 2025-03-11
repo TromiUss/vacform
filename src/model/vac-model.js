@@ -38,7 +38,6 @@ class VacancyModel {
         const vacancyIndex = this.vacancies.findIndex(vacancy => vacancy.id === id);
         if (vacancyIndex !== -1) {
             this.vacancies[vacancyIndex] = { ...this.vacancies[vacancyIndex], ...updatedData };
-            this.vacancies = [...this.vacancies];
         }
     }
 
