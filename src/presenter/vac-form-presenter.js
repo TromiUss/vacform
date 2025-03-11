@@ -14,6 +14,8 @@ const VacFormPresenter = ({
   const [initialValues, setInitialValues] = useState({
     VacName: '',
     Ot: '',
+    setInitialValuesalaryFrom: '',
+    salaryTo: '',
     salary: '',
     address: '',
     under: '',
@@ -34,7 +36,10 @@ const VacFormPresenter = ({
       console.log("Выбрана вакансия для редактирования:", selectedVacancy);
       setInitialValues({
         VacName: selectedVacancy.name || '',
+        Ot: selectedVacancy.ot || '',
+        salaryFrom: selectedVacancy.salaryFrom || '',
         salary: selectedVacancy.salary || '',
+        salaryTo: selectedVacancy.salaryTo || '',
         address: selectedVacancy.address || '',
         under: selectedVacancy.underground || '',
         date: selectedVacancy.date || '',
@@ -43,6 +48,23 @@ const VacFormPresenter = ({
         skills: selectedVacancy.experience || '',
         gr: selectedVacancy.gr || '',
         employment_type: selectedVacancy.employment_type || '',
+      });
+    }
+    if (mode === 'add') {
+      setInitialValues({
+        VacName: '',
+        Ot: '',
+        salaryFrom: '',
+        salaryTo: '',
+        salary: '',
+        address: '',
+        under: '',
+        date: '',
+        PlanDate: '',
+        gender: '',
+        skills: '',
+        gr: '',
+        employment_type: '',
       });
     }
   }, [mode, selectedVacancy]);

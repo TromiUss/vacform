@@ -65,11 +65,11 @@ const VacAddView = ({ initialValues, onSubmit, onSuccess }) => {
               <fieldset className="form-row-group">
                 <legend>Зарплата</legend>
                 <div className="radio-item">
-                  <Field type="radio" name="salary" value="net" />
+                  <Field type="radio" name="salary" value="На руки" />
                   <span>На руки</span>
                 </div>
                 <div className="radio-item">
-                  <Field type="radio" name="salary" value="gross" />
+                  <Field type="radio" name="salary" value="До вычета налога" />
                   <span>До вычета налога</span>
                 </div>
                 <div className="input-group">
