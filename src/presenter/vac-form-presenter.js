@@ -84,6 +84,8 @@ const VacFormPresenter = ({
       setVacancies(vacancyModel.getVacancies());
       console.log('Отредактирована вакансия:', values);
     }
+    setVacancies([...vacancyModel.getVacancies()]);
+  console.log(mode === 'add' ? 'Добавлена новая вакансия:' : 'Отредактирована вакансия:', values);
   }, [mode, selectedVacancy, vacancyModel]);
   return (
     <>
