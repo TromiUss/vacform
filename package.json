@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint src/",
     "build": "npx webpack --mode production",
-    "start": "webpack serve --mode development --open"
+    "start": "webpack serve --mode development --open",
+    "tsc:w": "tsc -w"
   },
   "author": "Nikita Markov",
   "license": "ISC",

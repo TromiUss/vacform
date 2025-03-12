@@ -12,13 +12,12 @@
       scroll-behavior: auto !important;
     }
   }
-  
-  @media screen and (max-width:1970px) {
+ 
     .page-body {
-      font-size: clamp(5px, 1.3vw, 20px);
+      font-size: clamp(16px, 1.3vw, 20px);
     }
-  }
-  
+
+  /*
   @media screen and (max-width:1700px) {
     .page-body {
       font-size: clamp(8px, 1.3vw, 20px);
