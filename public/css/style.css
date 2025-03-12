@@ -1,11 +1,11 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: Arial;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   background-color: #F3F7F8;
-  font-size: clamp(10px, 1.5vw, 24px);
 }
 
 main {
@@ -27,15 +27,6 @@ h1 {
   color: #4C73E3;
 }
 
-.vac-form__item {
-  background-color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  height: clamp(100px, 40vh, 200px);
-  border-radius: 16px;
-}
-
 .left-side__info {
   margin-right: auto;
   max-width: 65%;
@@ -44,12 +35,11 @@ h1 {
 }
 
 .right-side__info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-grow: 0;
-  gap: 20px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 0.4fr 0.61fr 1.1fr 1fr;
+  gap: 3px;
+  align-items: end;
 }
 
 
@@ -69,10 +59,10 @@ h1 {
 .vac-form__item {
   position: relative;
   background-color: #ffffff;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
   margin-bottom: 20px;
-  height: clamp(100px, 40vh, 200px);
+  height: clamp(200px, 20vh, 500px);
   padding: 15px;
 }
 

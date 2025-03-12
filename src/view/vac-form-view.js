@@ -33,10 +33,10 @@ const VacForm = ({ vacancies = [], onEditClick }) => {
                 </div>
               </div>
               <div className="right-side__info">
-                <div className="vac-salary-from">от {salaryFrom}</div>
-                <div className="vac-salary">{salary}</div>
-                <div className="vac-exp">Требуемый опыт: {experience}</div>
-                <div className="vac-address__under">
+                <div className="vac-salary-from right-side-item">от {salaryFrom}</div>
+                <div className="vac-salary right-side-item">{salary}</div>
+                <div className="vac-exp right-side-item">Требуемый опыт: {experience}</div>
+                <div className="vac-address__under right-side-item">
                   <h4>{underground}</h4>
                 </div>
               </div>
