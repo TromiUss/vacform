@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import VacFormPresenter from './presenter/vac-form-presenter';
 import VacancyModel from './model/vac-model';
+import './style.css';
+import './global.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

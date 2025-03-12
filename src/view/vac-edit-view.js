@@ -28,85 +28,95 @@ const VacEditView = ({ initialValues, onSubmit, onCancel }) => {
         }}>
         <Form id="vacancyForm" className="add-vac__form">
           <fieldset className="form-row-group">
-            <label htmlFor="VacName">Наименование вакансии</label>
-            <Field type="text" id="VacName" name="VacName" />
-            <ErrorMessage name="VacName" component="div" />
+            <label>Наименование вакансии
+              <Field type="text" name="VacName" />
+              <ErrorMessage name="VacName" component="div" />
+            </label>
 
-            <label htmlFor="Ot">Отдел</label>
-            <Field type="text" id="Ot" name="Ot" />
-            <ErrorMessage name="Ot" component="div" />
+            <label>Отдел
+              <Field type="text" name="Ot" />
+              <ErrorMessage name="Ot" component="div" />
+            </label>
           </fieldset>
           <fieldset className="form-row-group">
-            <label htmlFor="date">Дата открытия</label>
-            <Field type="date" id="date" name="date" />
-            <ErrorMessage name="date" component="div" />
+            <label>Дата открытия
+              <Field type="date" name="date" />
+              <ErrorMessage name="date" component="div" />
+            </label>
 
-            <label htmlFor="PlanDate">Плановая дата закрытия</label>
-            <Field type="date" id="PlanDate" name="PlanDate" />
-            <ErrorMessage name="PlanDate" component="div" />
+            <label>Плановая дата закрытия
+              <Field type="date" name="PlanDate" />
+              <ErrorMessage name="PlanDate" component="div" />
+            </label>
           </fieldset>
           <fieldset>
             <legend>Пол</legend>
-            <div className="radio-item">
+            <label className="radio-item">
               <Field type="radio" name="gender" value="male" />
               <span>Мужской</span>
-            </div>
-            <div className="radio-item">
+            </label>
+            <label className="radio-item">
               <Field type="radio" name="gender" value="female" />
               <span>Женский</span>
-            </div>
+            </label>
             <ErrorMessage name="gender" component="div" />
           </fieldset>
           <fieldset className="form-row-group">
             <legend>Зарплата</legend>
-            <div className="radio-item">
+            <label className="radio-item">
               <Field type="radio" name="salary" value="На руки" />
               <span>На руки</span>
-            </div>
-            <div className="radio-item">
+            </label>
+            <label className="radio-item">
               <Field type="radio" name="salary" value="До вычета налога" />
               <span>До вычета налога</span>
-            </div>
-            <div className="input-group">
-              <label htmlFor="salaryFrom">От</label>
-              <Field type="text" id="salaryFrom" name="salaryFrom" />
-            </div>
-            <div className="input-group">
-              <label htmlFor="salaryTo">До</label>
-              <Field type="text" id="salaryTo" name="salaryTo" />
-            </div>
+            </label>
+            <label className="input-group">
+              <label>От
+                <Field type="text" name="salaryFrom" />
+              </label>
+            </label>
+            <label className="input-group">
+              <label>До
+                <Field type="text" name="salaryTo" />
+              </label>
+            </label>
           </fieldset>
           <fieldset className="form-row-group">
-            <label htmlFor="address">Адрес</label>
-            <Field type="text" id="address" name="address" />
-            <ErrorMessage name="address" component="div" />
+            <label>Адрес
+              <Field type="text" name="address" />
+              <ErrorMessage name="address" component="div" />
+            </label>
 
-            <label htmlFor="under">Станция метро, МЦД</label>
-            <Field type="text" id="under" name="under" />
+            <label>Станция метро, МЦД
+              <Field type="text" name="under" />
+            </label>
           </fieldset>
           <fieldset className="form-row-group">
-            <label htmlFor="skills">Опыт работы</label>
-            <Field type="text" id="skills" name="skills" />
-            <ErrorMessage name="skills" component="div" />
+            <label>Опыт работы
+              <Field type="text" name="skills" />
+              <ErrorMessage name="skills" component="div" />
+            </label>
 
-            <label htmlFor="gr">График работы</label>
-            <Field type="text" id="gr" name="gr" />
-            <ErrorMessage name="gr" component="div" />
+            <label>График работы
+              <Field type="text" name="gr" />
+              <ErrorMessage name="gr" component="div" />
+            </label>
           </fieldset>
           <fieldset className="form-row-group">
             <legend>Тип занятости</legend>
-            <div className="radio-item">
+            <label className="radio-item">
               <Field type="radio" name="employment_type" value="full_time" />
               <span>Полная занятость</span>
-            </div>
-            <div className="radio-item">
+            </label>
+            <label className="radio-item">
               <Field type="radio" name="employment_type" value="part_time" />
               <span>Частичная занятость</span>
-            </div>
-            <div className="radio-item">
+            </label>
+            <label className="radio-item">
               <Field type="radio" name="employment_type" value="internship" />
               <span>Стажировка</span>
-            </div>
+            </label>
             <ErrorMessage name="employment_type" component="div" />
           </fieldset>
         </Form>
