@@ -112,14 +112,11 @@ h1 {
 
 .add-vac__form label,
 .edit-vac__form label {
-  display: block;
+  display: flex;
   margin-bottom: 5px;
+
 }
 
-.add-vac__form fieldset > * + *,
-.edit-vac__form fieldset > * + * {
-  margin-top: 15px;
-}
 
 .add-vac__form [type="radio"],
 .edit-vac__form [type="radio"] {
@@ -174,10 +171,10 @@ h1 {
 }
 
 .form-row-group {
-  display: flex;
+  display: grid;
   gap: 20px;
   align-items: center;
-  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .radio-item {
