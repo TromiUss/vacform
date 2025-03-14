@@ -114,6 +114,7 @@ h1 {
 .edit-vac__form label {
   display: flex;
   margin-bottom: 5px;
+  flex-wrap: wrap;
 
 }
 
@@ -144,7 +145,7 @@ h1 {
   cursor: pointer;
 }
 
-.page-body__container div button:not(:last-child) {
+.page-body__container button:not(:last-child) {
   margin-right: 20px;
 }
 
@@ -174,13 +175,25 @@ h1 {
   display: grid;
   gap: 20px;
   align-items: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .radio-item {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.form-row-group-salary {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.onSide,
+.underSide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .input-group {
@@ -194,7 +207,8 @@ input[type="date"] {
   padding: 12px 20px;
   border: 1px solid #DEE4F0;
   border-radius: 16px;
-  width: 275px;
+  width: 100%;
+  min-width: 235px;
 }
 
 .error {

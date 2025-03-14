@@ -16,7 +16,7 @@ const validationSchema = Yup.object({
 
 const VacEditView = ({ initialValues, onSubmit, onCancel }) => {
   return (
-    <div>
+    <label>
       <h1>Форма редактирования заявки</h1>
       <Formik enableReinitialize
         initialValues={initialValues}
@@ -61,26 +61,27 @@ const VacEditView = ({ initialValues, onSubmit, onCancel }) => {
             </label>
             <ErrorMessage name="gender" component="div" />
           </fieldset>
-          <fieldset className="form-row-group">
+          <fieldset className="form-row-group-salary">
             <legend>Зарплата</legend>
-            <label className="radio-item">
-              <Field type="radio" name="salary" value="На руки" />
-              <span>На руки</span>
-            </label>
-            <label className="radio-item">
-              <Field type="radio" name="salary" value="До вычета налога" />
-              <span>До вычета налога</span>
-            </label>
-            <label className="input-group">
-              <label>От
+            <div className="onSide">
+              <label className="radio-item">
+                <Field type="radio" name="salary" value="На руки" />
+                <span>На руки</span>
+              </label>
+              <label className="radio-item">
+                <Field type="radio" name="salary" value="До вычета налога" />
+                <span>До вычета налога</span>
+              </label>
+            </div>
+            <div className="underSide">
+              <label className="input-group">
+                От
                 <Field type="text" name="salaryFrom" />
               </label>
-            </label>
-            <label className="input-group">
-              <label>До
+              <label className="input-group">До
                 <Field type="text" name="salaryTo" />
               </label>
-            </label>
+            </div>
           </fieldset>
           <fieldset className="form-row-group">
             <label>Адрес
@@ -123,7 +124,7 @@ const VacEditView = ({ initialValues, onSubmit, onCancel }) => {
       </Formik>
       <button type="submit" form="vacancyForm" className='save-button'>Сохранить</button>
       <button type="button" onClick={onCancel} className="cancle-button">Отменить</button>
-    </div>
+    </label>
   );
 };
 

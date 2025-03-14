@@ -32,3 +32,9 @@
   margin-bottom: 20px;
 }
 }
+
+@media screen and (max-width:650px) {
+  .page-body__container button:not(:last-child) {
+    margin-bottom: 20px;
+}
+}

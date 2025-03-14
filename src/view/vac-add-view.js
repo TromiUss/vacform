@@ -66,26 +66,27 @@ const VacAddView = ({ initialValues, onSubmit, onSuccess }) => {
                 </label>
                 <ErrorMessage name="gender" component="div" />
               </fieldset>
-              <fieldset className="form-row-group">
+              <fieldset className="form-row-group-salary">
                 <legend>Зарплата</legend>
-                <label className="radio-item">
-                  <Field type="radio" name="salary" value="На руки" />
-                  <span>На руки</span>
-                </label>
-                <label className="radio-item">
-                  <Field type="radio" name="salary" value="До вычета налога" />
-                  <span>До вычета налога</span>
-                </label>
-                <label className="input-group">
-                  <label>От
+                <div className="onSide">
+                  <label className="radio-item">
+                    <Field type="radio" name="salary" value="На руки" />
+                    <span>На руки</span>
+                  </label>
+                  <label className="radio-item">
+                    <Field type="radio" name="salary" value="До вычета налога" />
+                    <span>До вычета налога</span>
+                  </label>
+                </div>
+                <div className="underSide">
+                  <label className="input-group">
+                    От
                     <Field type="text" name="salaryFrom" />
                   </label>
-                </label>
-                <label className="input-group">
-                  <label>До
+                  <label className="input-group">До
                     <Field type="text" name="salaryTo" />
                   </label>
-                </label>
+                </div>
               </fieldset>
               <fieldset className="form-row-group">
                 <label>Адрес
