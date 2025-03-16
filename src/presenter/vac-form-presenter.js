@@ -4,12 +4,7 @@ import VacEditView from '../view/vac-edit-view';
 import VacForm from '../view/vac-form-view';
 import * as Yup from 'yup';
 
-const VacFormPresenter = ({
-  mode = 'view',
-  vacancyModel,
-  selectedVacancy,
-  onEditClick,
-  setMode }) => {
+const VacFormPresenter = ({mode = 'view', vacancyModel, selectedVacancy, onEditClick, setMode}) => {
   const [vacancies, setVacancies] = useState([]);
   const [initialValues, setInitialValues] = useState({
     VacName: '',
@@ -33,7 +28,6 @@ const VacFormPresenter = ({
 
   useEffect(() => {
     if (mode === 'edit' && selectedVacancy) {
-      console.log("Выбрана вакансия для редактирования:", selectedVacancy);
       setInitialValues({
         VacName: selectedVacancy.name || '',
         Ot: selectedVacancy.ot || '',
@@ -85,7 +79,6 @@ const VacFormPresenter = ({
       console.log('Отредактирована вакансия:', values);
     }
     setVacancies([...vacancyModel.getVacancies()]);
-  console.log(mode === 'add' ? 'Добавлена новая вакансия:' : 'Отредактирована вакансия:', values);
   }, [mode, selectedVacancy, vacancyModel]);
   return (
     <>
