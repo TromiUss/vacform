@@ -128,4 +128,22 @@ const VacEditView = ({ initialValues, onSubmit, onCancel }) => {
   );
 };
 
+VacEditView.defaultProps = {
+  initialValues: {
+    VacName: '',
+    Ot: '',
+    salaryFrom: '',
+    salaryTo: '',
+    salary: '',
+    address: '',
+    under: '',
+    date: '',
+    PlanDate: '',
+    gender: '',
+    skills: '',
+    gr: '',
+    employment_type: '',
+  }
+};
+
 export default VacEditView;
