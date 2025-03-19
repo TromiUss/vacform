@@ -35,7 +35,7 @@ const VacAddView = ({ initialValues = {}, onSubmit, onSuccess = () => {} }) => {
       <h1>Форма размещения заявки</h1>
       <Formik
         enableReinitialize
-        initialValues={initialFormValues} // Здесь заменили initialValues на initialFormValues
+        initialValues={initialFormValues}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           onSubmit(values);
