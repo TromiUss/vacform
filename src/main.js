@@ -41,26 +41,27 @@ const App = () => {
         <div className="page-body__container">
           {mode === "view" && <VacForm vacancies={vacancies} onEditClick={handleEditClick} />}
           {mode === "add" && <VacAddView
-            initialValues={{ VacName: "", Ot: "", Do: "", Salary: "", Employment: "" }}
-            onSubmit={handleAddVacancy}
-          />}
-          {mode === "edit" && <VacEditView
-            initialValues={{
-              VacName: selectedVacancy?.name || '',
-              Ot: selectedVacancy?.ot || '',
-              salaryFrom: selectedVacancy?.salaryFrom || '',
-              salary: selectedVacancy?.salary || '',
-              salaryTo: selectedVacancy?.salaryTo || '',
-              address: selectedVacancy?.address || '',
-              under: selectedVacancy?.underground || '',
-              date: selectedVacancy?.date || '',
-              PlanDate: selectedVacancy?.PlanDate || '',
-              gender: selectedVacancy?.gender || '',
-              skills: selectedVacancy?.experience || '',
-              gr: selectedVacancy?.gr || '',
-              employment_type: selectedVacancy?.employment_type || '',
-            }}
+  initialValues={{ VacName: "", ot: "", Do: "", Salary: "", Employment: "" }}
+  onSubmit={handleAddVacancy}
+  onSuccess={() => setMode("view")}
+/>}
+          {mode === "edit" && <VacEditView initialValues={{
+            VacName: selectedVacancy?.name || '',
+            Ot: selectedVacancy?.ot || '',
+            salaryFrom: selectedVacancy?.salaryFrom || '',
+            salary: selectedVacancy?.salary || '',
+            salaryTo: selectedVacancy?.salaryTo || '',
+            address: selectedVacancy?.address || '',
+            under: selectedVacancy?.underground || '',
+            date: selectedVacancy?.date || '',
+            PlanDate: selectedVacancy?.PlanDate || '',
+            gender: selectedVacancy?.gender || '',
+            skills: selectedVacancy?.experience || '',
+            gr: selectedVacancy?.gr || '',
+            employment_type: selectedVacancy?.employment_type || '',
+          }}
             onUpdateVacancy={handleUpdateVacancy}
+            onCancel={() => setMode('view')}
             setMode={setMode}
           />}
         </div>
