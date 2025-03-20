@@ -46,7 +46,7 @@ const VacAddView = ({ initialValues = {}, onSubmit, onSuccess = () => { } }) => 
           onSuccess();
         }}
       >
-        {({ resetForm }) => (
+        {({ resetForm, errors, touched }) => (
           <>
             <Form id="vacancyForm" className="add-vac__form">
               <fieldset className="form-row-group">
