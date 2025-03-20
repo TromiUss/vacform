@@ -158,6 +158,10 @@ h1 {
   cursor: pointer;
 }
 
+.selected-button {
+  text-decoration: underline 5px #F2C94C;
+}
+
 .list-button:hover, .new-button:hover {
   background: #88A4F5;
 }

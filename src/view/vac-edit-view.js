@@ -1,6 +1,9 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import initialValues  from '../utils.js';
+import { Button, DatePicker } from 'antd';
+
 
 const validationSchema = Yup.object({
   VacName: Yup.string().required('Обязательное поле'),
@@ -40,12 +43,12 @@ const VacEditView = ({ initialValues, onSubmit, onCancel }) => {
           </fieldset>
           <fieldset className="form-row-group">
             <label>Дата открытия
-              <Field type="date" name="date" />
+              <DatePicker type="date" name="date" />
               <ErrorMessage name="date" component="div" />
             </label>
 
             <label>Плановая дата закрытия
-              <Field type="date" name="PlanDate" />
+              <DatePicker type="date" name="PlanDate" />
               <ErrorMessage name="PlanDate" component="div" />
             </label>
           </fieldset>
@@ -122,28 +125,12 @@ const VacEditView = ({ initialValues, onSubmit, onCancel }) => {
           </fieldset>
         </Form>
       </Formik>
-      <button type="submit" form="vacancyForm" className='save-button'>Сохранить</button>
-      <button type="button" onClick={onCancel} className="cancle-button">Отменить</button>
+      <Button type="primary" form="vacancyForm" >Сохранить</Button>
+      <Button type="primary" onClick={onCancel} >Отменить</Button>
     </label>
   );
 };
 
-VacEditView.defaultProps = {
-  initialValues: {
-    VacName: '',
-    Ot: '',
-    salaryFrom: '',
-    salaryTo: '',
-    salary: '',
-    address: '',
-    under: '',
-    date: '',
-    PlanDate: '',
-    gender: '',
-    skills: '',
-    gr: '',
-    employment_type: '',
-  }
-};
+VacEditView.defaultProps = {initialValues};
 
 export default VacEditView;

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import initialValues from '../utils.js';
+import { Button, DatePicker } from 'antd';
 
 const validationSchema = Yup.object({
   VacName: Yup.string().required('Обязательное поле'),
@@ -14,7 +16,7 @@ const validationSchema = Yup.object({
   employment_type: Yup.string().required('Обязательное поле')
 });
 
-const VacAddView = ({ initialValues = {}, onSubmit, onSuccess = () => {} }) => {
+const VacAddView = ({ initialValues = {}, onSubmit, onSuccess = () => { } }) => {
   const initialFormValues = {
     VacName: initialValues.VacName ?? '',
     Ot: initialValues.Ot ?? '',
@@ -44,127 +46,113 @@ const VacAddView = ({ initialValues = {}, onSubmit, onSuccess = () => {} }) => {
           onSuccess();
         }}
       >
-        <>
-          <Form id="vacancyForm" className="add-vac__form">
-            <fieldset className="form-row-group">
-              <label>Наименование вакансии
-                <Field type="text" name="VacName" />
-                <ErrorMessage name="VacName" component="div" />
-              </label>
+        {({ resetForm }) => (
+          <>
+            <Form id="vacancyForm" className="add-vac__form">
+              <fieldset className="form-row-group">
+                <label>Наименование вакансии
+                  <Field type="text" name="VacName" />
+                  <ErrorMessage name="VacName" component="div" />
+                </label>
 
-              <label>Отдел
-                <Field type="text" name="Ot" />
-                <ErrorMessage name="Ot" component="div" />
-              </label>
-            </fieldset>
-            <fieldset className="form-row-group">
-              <label>Дата открытия
-                <Field type="date" name="date" />
-                <ErrorMessage name="date" component="div" />
-              </label>
+                <label>Отдел
+                  <Field type="text" name="Ot" />
+                  <ErrorMessage name="Ot" component="div" />
+                </label>
+              </fieldset>
+              <fieldset className="form-row-group">
+                <label>Дата открытия
+                  <DatePicker type="date" name="date"/>
+                  <ErrorMessage name="date" component="div" />
+                </label>
 
-              <label>Плановая дата закрытия
-                <Field type="date" name="PlanDate" />
-                <ErrorMessage name="PlanDate" component="div" />
-              </label>
-            </fieldset>
-            <fieldset>
-              <legend>Пол</legend>
-              <label className="radio-item">
-                <Field type="radio" name="gender" value="male" />
-                <span>Мужской</span>
-              </label>
-              <label className="radio-item">
-                <Field type="radio" name="gender" value="female" />
-                <span>Женский</span>
-              </label>
-              <ErrorMessage name="gender" component="div" />
-            </fieldset>
-            <fieldset className="form-row-group-salary">
-              <legend>Зарплата</legend>
-              <div className="onSide">
+                <label>Плановая дата закрытия
+                  <DatePicker type="date" name="PlanDate" />
+                  <ErrorMessage name="PlanDate" component="div" />
+                </label>
+              </fieldset>
+              <fieldset>
+                <legend>Пол</legend>
                 <label className="radio-item">
-                  <Field type="radio" name="salary" value="На руки" />
-                  <span>На руки</span>
+                  <Field type="radio" name="gender" value="male" />
+                  <span>Мужской</span>
                 </label>
                 <label className="radio-item">
-                  <Field type="radio" name="salary" value="До вычета налога" />
-                  <span>До вычета налога</span>
+                  <Field type="radio" name="gender" value="female" />
+                  <span>Женский</span>
                 </label>
-              </div>
-              <div className="underSide">
-                <label className="input-group">
-                  От
-                  <Field type="text" name="salaryFrom" />
+                <ErrorMessage name="gender" component="div" />
+              </fieldset>
+              <fieldset className="form-row-group-salary">
+                <legend>Зарплата</legend>
+                <div className="onSide">
+                  <label className="radio-item">
+                    <Field type="radio" name="salary" value="На руки" />
+                    <span>На руки</span>
+                  </label>
+                  <label className="radio-item">
+                    <Field type="radio" name="salary" value="До вычета налога" />
+                    <span>До вычета налога</span>
+                  </label>
+                </div>
+                <div className="underSide">
+                  <label className="input-group">
+                    От
+                    <Field type="text" name="salaryFrom" />
+                  </label>
+                  <label className="input-group">До
+                    <Field type="text" name="salaryTo" />
+                  </label>
+                </div>
+              </fieldset>
+              <fieldset className="form-row-group">
+                <label>Адрес
+                  <Field type="text" name="address" />
+                  <ErrorMessage name="address" component="div" />
                 </label>
-                <label className="input-group">До
-                  <Field type="text" name="salaryTo" />
-                </label>
-              </div>
-            </fieldset>
-            <fieldset className="form-row-group">
-              <label>Адрес
-                <Field type="text" name="address" />
-                <ErrorMessage name="address" component="div" />
-              </label>
 
-              <label>Станция метро, МЦД
-                <Field type="text" name="under" />
-              </label>
-            </fieldset>
-            <fieldset className="form-row-group">
-              <label>Опыт работы
-                <Field type="text" name="skills" />
-                <ErrorMessage name="skills" component="div" />
-              </label>
+                <label>Станция метро, МЦД
+                  <Field type="text" name="under" />
+                </label>
+              </fieldset>
+              <fieldset className="form-row-group">
+                <label>Опыт работы
+                  <Field type="text" name="skills" />
+                  <ErrorMessage name="skills" component="div" />
+                </label>
 
-              <label>График работы
-                <Field type="text" name="gr" />
-                <ErrorMessage name="gr" component="div" />
-              </label>
-            </fieldset>
-            <fieldset className="form-row-group">
-              <legend>Тип занятости</legend>
-              <label className="radio-item">
-                <Field type="radio" name="employment_type" value="full_time" />
-                <span>Полная занятость</span>
-              </label>
-              <label className="radio-item">
-                <Field type="radio" name="employment_type" value="part_time" />
-                <span>Частичная занятость</span>
-              </label>
-              <label className="radio-item">
-                <Field type="radio" name="employment_type" value="internship" />
-                <span>Стажировка</span>
-              </label>
-              <ErrorMessage name="employment_type" component="div" />
-            </fieldset>
-          </Form>
-          <button type="submit" form="vacancyForm" className="send-button">Отправить</button>
-          <button type="button" onClick={(e) => { e.preventDefault(); resetForm(); }} className="inner-button">Сбросить</button>
-        </>
+                <label>График работы
+                  <Field type="text" name="gr" />
+                  <ErrorMessage name="gr" component="div" />
+                </label>
+              </fieldset>
+              <fieldset className="form-row-group">
+                <legend>Тип занятости</legend>
+                <label className="radio-item">
+                  <Field type="radio" name="employment_type" value="full_time" />
+                  <span>Полная занятость</span>
+                </label>
+                <label className="radio-item">
+                  <Field type="radio" name="employment_type" value="part_time" />
+                  <span>Частичная занятость</span>
+                </label>
+                <label className="radio-item">
+                  <Field type="radio" name="employment_type" value="internship" />
+                  <span>Стажировка</span>
+                </label>
+                <ErrorMessage name="employment_type" component="div" />
+              </fieldset>
+            </Form>
+            <Button type="primary" form="vacancyForm" >Отправить</Button>
+            <Button type="primary" onClick={(e) => { e.preventDefault(); resetForm(); }} >Сбросить</Button>
+          </>
+        )}
       </Formik>
     </label>
   );
 };
 
 
-VacAddView.defaultProps = {
-  initialValues: {
-    VacName: '',
-    Ot: '',
-
-    salaryTo: '',
-    salary: '',
-    address: '',
-    under: '',
-    date: '',
-    PlanDate: '',
-    gender: '',
-    skills: '',
-    gr: '',
-    employment_type: '',
-  }
-};
+VacAddView.defaultProps = { initialValues };
 
 export default VacAddView;
