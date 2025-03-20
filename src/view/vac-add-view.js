@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import initialValues from '../utils.js';
 import { Button, DatePicker } from 'antd';
+import dayjs from 'dayjs';
 
 const validationSchema = Yup.object({
   VacName: Yup.string().required('Обязательное поле'),
@@ -46,7 +47,7 @@ const VacAddView = ({ initialValues = {}, onSubmit, onSuccess = () => { } }) => 
           onSuccess();
         }}
       >
-        {({ resetForm, errors, touched }) => (
+        {({ values, touched, setFieldValue, setTouched, resetForm }) => (
           <>
             <Form id="vacancyForm" className="add-vac__form">
               <fieldset className="form-row-group">
@@ -62,12 +63,22 @@ const VacAddView = ({ initialValues = {}, onSubmit, onSuccess = () => { } }) => 
               </fieldset>
               <fieldset className="form-row-group">
                 <label>Дата открытия
-                  <DatePicker type="date" name="date"/>
+                  <DatePicker
+                    name="date"
+                    value={values.date ? dayjs(values.date) : null}
+                    onChange={(date) => setFieldValue("date", date ? date.toISOString() : "")}
+                    onBlur={() => setTouched({ ...touched, date: true })}
+                  />
                   <ErrorMessage name="date" component="div" />
                 </label>
 
                 <label>Плановая дата закрытия
-                  <DatePicker type="date" name="PlanDate" />
+                  <DatePicker
+                    name="PlanDate"
+                    value={values.PlanDate ? dayjs(values.PlanDate) : null}
+                    onChange={(date) => setFieldValue("PlanDate", date ? date.toISOString() : "")}
+                    onBlur={() => setTouched({ ...touched, PlanDate: true })}
+                  />
                   <ErrorMessage name="PlanDate" component="div" />
                 </label>
               </fieldset>
