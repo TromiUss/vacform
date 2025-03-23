@@ -1,11 +1,21 @@
 {
   "compilerOptions": {
-   "module": "commonjs",
+  "module": "commonjs",
   "sourceMap": true,
-    "jsx": "react"
+  "jsx": "react",
+  "skipLibCheck": true,
+
+  "allowImportingTsExtensions": true,
+  "resolveJsonModule": true,
+  "isolatedModules": true,
+
+  "strict": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "noFallthroughCasesInSwitch": true,
+  "forceConsistentCasingInFileNames": true,
   },
   "exclude": [
-    "node_modules",
-    ""
+    "node_modules"
   ]
 }
