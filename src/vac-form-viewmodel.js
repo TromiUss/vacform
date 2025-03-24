@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getVacancies, addVacancy, updateVacancy } from "./model/vac-model.js";
+import { getVacancies, addVacancy, updateVacancy } from "./model/vac-model";
 
 export const useVacancyViewModel = () => {
   const [vacancies, setVacancies] = useState([]);

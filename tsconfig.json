@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
     "module": "ESNext",
+    "strict": true,
+    "skipLibCheck": true,
     "target": "ESNext",
     "lib": ["DOM", "ESNext"],
     "jsx": "react-jsx",
-    "strict": true,
     "sourceMap": true,
-    "skipLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@model/*": ["model/*"]
+    },
 
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
