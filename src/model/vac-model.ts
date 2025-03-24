@@ -1,6 +1,6 @@
 import vacList, { Vacancy } from '../mock/vac-list';
 
-let vacanciesModel: Vacancy[] = [...vacList];
+const vacanciesModel: Vacancy[] = [...vacList];
 
 export const getVacancies = (): Vacancy[] => vacanciesModel;
 
