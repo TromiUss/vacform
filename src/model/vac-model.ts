@@ -1,4 +1,6 @@
-import vacList, { Vacancy } from '../mock/vac-list';
+import vacList from '../mock/vac-list';
+import { Vacancy } from './vacancy';
+
 
 const vacanciesModel: Vacancy[] = [...vacList];
 
