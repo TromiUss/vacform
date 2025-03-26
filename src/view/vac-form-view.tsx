@@ -1,6 +1,12 @@
 import React from 'react';
+import { Vacancy } from '../model/vacancy';
 
-const VacForm = ({ vacancies = [], onEditClick }) => {
+type VacFormProps = {
+  vacancies: Vacancy[];
+  onEditClick: (vacancy: Vacancy) => void;
+}
+
+const VacForm: React.FC<VacFormProps> = ({ vacancies = [], onEditClick }) => {
   if (vacancies.length === 0) {
     return <p>Нет вакансий</p>;
   }

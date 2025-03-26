@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { useVacancyViewModel } from "./vac-form-viewmodel.js";
-import VacForm from "./view/vac-form-view.js";
+import VacForm from "./view/vac-form-view";
 import VacAddView from "./view/vac-add-view.js";
 import VacEditView from "./view/vac-edit-view.js";
 import initialValues  from './utils.js';
