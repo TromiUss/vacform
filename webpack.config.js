@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     entry: './src/main.js',
     resolve: {
-        extensions: ['.ts', '.js', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.json']
     },
     output: {
         filename: 'bundle.js',
@@ -14,11 +14,11 @@ module.exports = {
     devtool: 'source-map',
     plugins: [new HtmlWebpackPlugin({
         template: 'public/index.html',
-    }),],
-      module: {
+    })],
+    module: {
         rules: [
             {
-                test: /\.ts$/,
+                test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
                 use: 'ts-loader',
             },
@@ -28,7 +28,11 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                        presets: [
+                            '@babel/preset-env',
+                            ['@babel/preset-react', {runtime: 'automatic'}],
+                            '@babel/preset-typescript'
+                        ],
                     },
                 },
             },
