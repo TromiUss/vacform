@@ -5,8 +5,8 @@ export type Vacancy = {
   salary: string;
   salaryFrom: string;
   salaryTo: string;
-  date: string | Date | null;
-  PlanDate: string | Date | null;
+  date: string;
+  PlanDate: string;
   gender: string;
   experience: string;
   address: string;
