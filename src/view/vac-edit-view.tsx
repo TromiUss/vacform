@@ -1,9 +1,9 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import initialValues from '../utils.js';
-import { Button, DatePicker } from 'antd';
-import dayjs from 'dayjs';
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { Button, DatePicker } from "antd";
+import dayjs from "dayjs";
+import type { VacFormProps } from "./vac-form-view.tsx";
 
 
 const validationSchema = Yup.object({
@@ -18,12 +18,32 @@ const validationSchema = Yup.object({
   employment_type: Yup.string().required('Обязательное поле')
 });
 
-const VacEditView = ({ initialValues, onSubmit, onCancel }) => {
+const VacAddView: React.FC<VacFormProps> = ({
+  vacancies = [],
+  onSubmit,
+  onSuccess = () => {},
+}) => {
+  const initialVacancy = vacancies?.[0] || {};
+  const initialFormValues = {
+    name: initialVacancy.name ?? "",
+    ot: initialVacancy.ot ?? "",
+    salaryTo: initialVacancy.salaryTo ?? "",
+    salaryFrom: initialVacancy.salaryFrom ?? "",
+    salary: initialVacancy.salary ?? "",
+    address: initialVacancy.address ?? "",
+    underground: initialVacancy.underground ?? "",
+    date: initialVacancy.date ? dayjs(initialVacancy.date) : null,
+    PlanDate: initialVacancy.PlanDate ? dayjs(initialVacancy.PlanDate) : null,
+    gender: initialVacancy.gender ?? "",
+    experience: initialVacancy.experience ?? "",
+    gr: initialVacancy.gr ?? "",
+    employment_type: initialVacancy.employment_type ?? "",
+  };
   return (
     <label>
       <h1>Форма редактирования заявки</h1>
       <Formik enableReinitialize
-        initialValues={initialValues}
+        initialValues={initialFormValues}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           onSubmit(values);
