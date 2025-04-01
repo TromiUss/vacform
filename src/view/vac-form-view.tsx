@@ -6,6 +6,7 @@ export type VacFormProps = {
   onEditClick: (vacancy: Vacancy) => void;
   onSubmit: (values: Vacancy) => void;
   onSuccess?: () => void;
+  onCancel?: () => void;
 };
 
 const VacForm: React.FC<VacFormProps> = ({ vacancies = [], onEditClick }) => {

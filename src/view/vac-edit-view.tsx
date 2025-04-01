@@ -18,7 +18,7 @@ const validationSchema = Yup.object({
   employment_type: Yup.string().required('Обязательное поле')
 });
 
-const VacAddView: React.FC<VacFormProps> = ({
+const VacEditView: React.FC<VacFormProps> = ({
   vacancies = [],
   onSubmit,
   onSuccess = () => {},
@@ -41,16 +41,27 @@ const VacAddView: React.FC<VacFormProps> = ({
   };
   return (
     <label>
-      <h1>Форма редактирования заявки</h1>
-      <Formik enableReinitialize
-        initialValues={initialFormValues}
-        validationSchema={validationSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          onSubmit(values);
-          setSubmitting(false);
-          onSuccess();
-        }}>
-        {({ values, touched, setFieldValue, setTouched, resetForm }) => (
+          <h1>Форма размещения заявки</h1>
+          <Formik
+            enableReinitialize
+            initialValues={initialFormValues}
+            validationSchema={validationSchema}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+              const parsedValues = {
+                ...values,
+                date: values.date ? values.date.toISOString() : "",
+                PlanDate: values.PlanDate ? values.PlanDate.toISOString() : "",
+                id: Date.now(),
+                publicationDate: new Date().toISOString(),
+              };
+              onSubmit(parsedValues);
+              setSubmitting(false);
+              resetForm();
+              onSuccess();
+              onCancel ();
+            }}
+          >
+        {({ values, touched, setFieldValue, setTouched }) => (
           <Form id="vacancyForm" className="add-vac__form">
             <fieldset className="form-row-group">
               <label>Наименование вакансии
@@ -159,11 +170,10 @@ const VacAddView: React.FC<VacFormProps> = ({
         )}
       </Formik>
       <Button type="primary" form="vacancyForm" >Сохранить</Button>
-      <Button type="primary" onClick={onCancel} >Отменить</Button>
+      <Button type="primary" onClick={() => onCancel?.()}>Отменить</Button>
     </label>
   );
 };
 
-VacEditView.defaultProps = { initialValues };
 
 export default VacEditView;
