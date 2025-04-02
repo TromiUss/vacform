@@ -28,7 +28,7 @@ const App = () => {
     setActiveButton("add");
   };
 
-  const handleEditClick = (vacancy) => {
+  const handleEditClick = (vacancy: Vacancy) => {
     setSelectedVacancy(vacancy);
     setMode("edit");
     setActiveButton(null);
