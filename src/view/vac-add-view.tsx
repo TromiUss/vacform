@@ -26,8 +26,8 @@ const VacAddView: React.FC<VacFormProps> = ({
 }) => {
   const initialVacancy = vacancies?.[0] || {};
   const initialFormValues = {
-    name: initialVacancy.name ?? "",
-    ot: initialVacancy.ot ?? "",
+    VacName: initialVacancy.VacName ?? "",
+    Ot: initialVacancy.Ot ?? "",
     salaryTo: initialVacancy.salaryTo ?? "",
     salaryFrom: initialVacancy.salaryFrom ?? "",
     salary: initialVacancy.salary ?? "",

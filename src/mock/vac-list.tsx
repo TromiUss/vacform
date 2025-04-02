@@ -1,8 +1,8 @@
 const vacList = [
     {
         id: 1,
-        name: "Backend-разработчик",
-        ot:"ИТ",
+        VacName: "Backend-разработчик",
+        Ot:"ИТ",
         salary: "До вычета налога",
         salaryFrom:"80 000",
         salaryTo:"90 000",
@@ -18,8 +18,8 @@ const vacList = [
     },
     {
         id: 2,
-        name: "Frontend-разработчик",
-        ot:"Другой",
+        VacName: "Frontend-разработчик",
+        Ot:"Другой",
         salary: "На руки",
         salaryFrom:"100 000",
         salaryTo:"110 000",
@@ -35,8 +35,8 @@ const vacList = [
     },
     {
         id: 3,
-        name: "Fullstack-разработчик",
-        ot:"ИТ",
+        VacName: "Fullstack-разработчик",
+        Ot:"ИТ",
         salary: "На руки",
         salaryFrom:"60 000",
         salaryTo:"70 000",

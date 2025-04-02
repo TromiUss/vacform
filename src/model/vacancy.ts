@@ -1,7 +1,7 @@
 export type Vacancy = {
     id: number;
-    name: string;
-    ot: string;
+    VacName: string;
+    Ot: string;
     salary: string;
     salaryFrom: string;
     salaryTo: string;

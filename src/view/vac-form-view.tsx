@@ -19,7 +19,7 @@ const VacForm: React.FC<VacFormProps> = ({ vacancies = [], onEditClick }) => {
       <h1>Заявки на размещение вакансий</h1>
       <ul className="vac-form__list">
         {vacancies.map((vacancy) => {
-          const { name, salaryFrom, salary, experience, address, underground, publicationDate, id } = vacancy;
+          const { VacName, salaryFrom, salary, experience, address, underground, publicationDate, id } = vacancy;
 
           return (
             <li className="vac-form__item" key={id}>
@@ -36,7 +36,7 @@ const VacForm: React.FC<VacFormProps> = ({ vacancies = [], onEditClick }) => {
                 <div className="vac-date__post">
                   <h4>Дата публикации: {publicationDate}</h4>
                 </div>
-                <h2 className="vac-name">{name}</h2>
+                <h2 className="vac-name">{VacName}</h2>
                 <div className="vac-address">
                   <h4>{address}</h4>
                 </div>

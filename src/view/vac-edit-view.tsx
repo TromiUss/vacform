@@ -22,11 +22,12 @@ const VacEditView: React.FC<VacFormProps> = ({
   vacancies = [],
   onSubmit,
   onSuccess = () => {},
+  onCancel = () => {},
 }) => {
   const initialVacancy = vacancies?.[0] || {};
   const initialFormValues = {
-    name: initialVacancy.name ?? "",
-    ot: initialVacancy.ot ?? "",
+    VacName: initialVacancy.VacName ?? "",
+    Ot: initialVacancy.Ot ?? "",
     salaryTo: initialVacancy.salaryTo ?? "",
     salaryFrom: initialVacancy.salaryFrom ?? "",
     salary: initialVacancy.salary ?? "",
@@ -38,7 +39,7 @@ const VacEditView: React.FC<VacFormProps> = ({
     experience: initialVacancy.experience ?? "",
     gr: initialVacancy.gr ?? "",
     employment_type: initialVacancy.employment_type ?? "",
-  };
+  }
   return (
     <label>
           <h1>Форма размещения заявки</h1>
@@ -46,7 +47,7 @@ const VacEditView: React.FC<VacFormProps> = ({
             enableReinitialize
             initialValues={initialFormValues}
             validationSchema={validationSchema}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
+            onSubmit={(values, { setSubmitting }) => {
               const parsedValues = {
                 ...values,
                 date: values.date ? values.date.toISOString() : "",
@@ -56,9 +57,8 @@ const VacEditView: React.FC<VacFormProps> = ({
               };
               onSubmit(parsedValues);
               setSubmitting(false);
-              resetForm();
               onSuccess();
-              onCancel ();
+              onCancel();
             }}
           >
         {({ values, touched, setFieldValue, setTouched }) => (

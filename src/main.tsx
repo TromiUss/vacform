@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import { useVacancyViewModel } from "./vac-form-viewmodel.js";
-import VacForm from "./view/vac-form-view.tsx";
-import VacAddView from "./view/vac-add-view.tsx";
-import VacEditView from "./view/vac-edit-view.tsx";
-import initialValues  from './utils.js';
+import { useVacancyViewModel } from "./vac-form-viewmodel";
+import VacForm from "./view/vac-form-view";
+import VacAddView from "./view/vac-add-view";
+import VacEditView from "./view/vac-edit-view";
+import initialValues  from './utils';
 
 import "./style.css";
 import "./global.css";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const rootElement = document.getElementById('root')!;
+const root = ReactDOM.createRoot(rootElement);
 
 const App = () => {
   const { vacancies, handleAddVacancy, handleUpdateVacancy } = useVacancyViewModel();
