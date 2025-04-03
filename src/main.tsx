@@ -8,6 +8,7 @@ import initialValues  from './utils';
 
 import "./style.css";
 import "./global.css";
+import { Vacancy } from "@model/vacancy";
 
 const rootElement = document.getElementById('root')!;
 const root = ReactDOM.createRoot(rootElement);
