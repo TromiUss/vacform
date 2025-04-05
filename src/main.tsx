@@ -63,7 +63,7 @@ const App = () => {
           } } />}
           {mode === "add" && (
             <VacAddView
-              initialValues={initialValues}
+            initialValues={vacancies}
               onSubmit={handleAddVacancy}
               onSuccess={() => setMode("view")}
             />
