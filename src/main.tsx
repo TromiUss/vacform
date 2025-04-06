@@ -4,7 +4,6 @@ import { useVacancyViewModel } from "./vac-form-viewmodel";
 import VacForm from "./view/vac-form-view";
 import VacAddView from "./view/vac-add-view";
 import VacEditView from "./view/vac-edit-view";
-import initialValues  from './utils';
 
 import "./style.css";
 import "./global.css";
