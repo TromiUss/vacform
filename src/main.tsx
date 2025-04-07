@@ -70,8 +70,8 @@ const App = () => {
           {mode === "edit" && (
             <VacEditView
               initialValues={{
-                VacName: selectedVacancy?.name || "",
-                Ot: selectedVacancy?.ot || "",
+                VacName: selectedVacancy?.VacName || "",
+                Ot: selectedVacancy?.Ot || "",
                 salaryFrom: selectedVacancy?.salaryFrom || "",
                 salary: selectedVacancy?.salary || "",
                 salaryTo: selectedVacancy?.salaryTo || "",
