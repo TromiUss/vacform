@@ -15,8 +15,8 @@ const root = ReactDOM.createRoot(rootElement);
 const App = () => {
   const { vacancies, handleAddVacancy, handleUpdateVacancy } = useVacancyViewModel();
   const [mode, setMode] = useState("view");
-  const [selectedVacancy, setSelectedVacancy] = useState(null);
-  const [activeButton, setActiveButton] = useState("view");
+  const [selectedVacancy, setSelectedVacancy] = useState<Vacancy | null>(null);
+  const [activeButton, setActiveButton] = useState<string | null>("view");
 
   const handleViewClick = () => {
     setMode("view");
