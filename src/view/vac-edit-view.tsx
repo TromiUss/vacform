@@ -24,27 +24,28 @@ const VacEditView: React.FC<VacFormProps> = ({
   onSuccess = () => {},
   onCancel = () => {},
 }) => {
-  const initialVacancy = {
-    VacName: vacancies.VacName ?? "",
-    Ot: vacancies.Ot ?? "",
-    salaryTo: vacancies.salaryTo ?? "",
-    salaryFrom: vacancies.salaryFrom ?? "",
-    salary: vacancies.salary ?? "",
-    address: vacancies.address ?? "",
-    underground: vacancies.underground ?? "",
-    date: vacancies.date ? dayjs(vacancies.date) : null,
-    PlanDate: vacancies.PlanDate ? dayjs(vacancies.PlanDate) : null,
-    gender: vacancies.gender ?? "",
-    experience: vacancies.experience ?? "",
-    gr: vacancies.gr ?? "",
-    employment_type: vacancies.employment_type ?? "",
+  const initialVacancy = vacancies?.[0] || {};
+  const initialFormValues = {
+    VacName: initialVacancy.VacName ?? "",
+    Ot: initialVacancy.Ot ?? "",
+    salaryTo: initialVacancy.salaryTo ?? "",
+    salaryFrom: initialVacancy.salaryFrom ?? "",
+    salary: initialVacancy.salary ?? "",
+    address: initialVacancy.address ?? "",
+    underground: initialVacancy.underground ?? "",
+    date: initialVacancy.date ? dayjs(initialVacancy.date) : null,
+    PlanDate: initialVacancy.PlanDate ? dayjs(initialVacancy.PlanDate) : null,
+    gender: initialVacancy.gender ?? "",
+    experience: initialVacancy.experience ?? "",
+    gr: initialVacancy.gr ?? "",
+    employment_type: initialVacancy.employment_type ?? "",
   }
   return (
     <label>
           <h1>Форма размещения заявки</h1>
           <Formik
             enableReinitialize
-            initialValues={initialVacancy}
+            initialValues={initialFormValues}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting }) => {
               const parsedValues = {
