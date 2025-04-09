@@ -23,22 +23,21 @@ const VacEditView: React.FC<VacEditViewProps> = ({
   onCancel,
   setMode,
 }) => {
-  const initialVacancy = initialValues?.[0] || {};
+  const initialVacancy = initialValues;
   const initialFormValues = {
-    VacName: initialValues.VacName ?? "",
-  Ot: initialValues.Ot ?? "",
-  salaryTo: initialValues.salaryTo ?? "",
-  salaryFrom: initialValues.salaryFrom ?? "",
-  salary: initialValues.salary ?? "",
-  address: initialValues.address ?? "",
-  underground: initialValues.underground ?? "",
-  date: initialValues.date ? dayjs(initialValues.date) : null,
-  PlanDate: initialValues.PlanDate ? dayjs(initialValues.PlanDate) : null,
-  gender: initialValues.gender ?? "",
-  experience: initialValues.experience ?? "",
-  gr: initialValues.gr ?? "",
-  employment_type: initialValues.employment_type ?? "",
-  skills: initialValues.experience ?? "",
+    VacName: initialVacancy.VacName ?? "",
+    Ot: initialVacancy.Ot ?? "",
+    salaryTo: initialVacancy.salaryTo ?? "",
+    salaryFrom: initialVacancy.salaryFrom ?? "",
+    salary: initialVacancy.salary ?? "",
+    address: initialVacancy.address ?? "",
+    underground: initialVacancy.underground ?? "",
+    date: initialVacancy.date ? dayjs(initialVacancy.date) : null,
+    PlanDate: initialVacancy.PlanDate ? dayjs(initialVacancy.PlanDate) : null,
+    gender: initialVacancy.gender ?? "",
+    experience: initialVacancy.experience ?? "",
+    gr: initialVacancy.gr ?? "",
+    employment_type: initialVacancy.employment_type ?? "",
   }
   return (
     <label>
@@ -55,9 +54,9 @@ const VacEditView: React.FC<VacEditViewProps> = ({
                 id: Date.now(),
                 publicationDate: new Date().toISOString(),
               };
-              onUpdateVacancy(parsedValues);
+              onUpdateVacancy(parsedValues.id, parsedValues);
               setSubmitting(false);
-              onSuccess();
+              setMode;
               onCancel();
             }}
           >
@@ -169,7 +168,7 @@ const VacEditView: React.FC<VacEditViewProps> = ({
           </Form>
         )}
       </Formik>
-      <Button type="primary" form="vacancyForm" >Сохранить</Button>
+      <Button type="primary" form="vacancyForm" onClick={() => setMode("view")}>Сохранить</Button>
       <Button type="primary" onClick={() => onCancel?.()}>Отменить</Button>
     </label>
   );

@@ -76,11 +76,11 @@ const App = () => {
                 salary: selectedVacancy?.salary || "",
                 salaryTo: selectedVacancy?.salaryTo || "",
                 address: selectedVacancy?.address || "",
-                under: selectedVacancy?.underground || "",
+                underground: selectedVacancy?.underground || "",
                 date: selectedVacancy?.date || "",
                 PlanDate: selectedVacancy?.PlanDate || "",
                 gender: selectedVacancy?.gender || "",
-                skills: selectedVacancy?.experience || "",
+                experience: selectedVacancy?.experience || "",
                 gr: selectedVacancy?.gr || "",
                 employment_type: selectedVacancy?.employment_type || "",
               }}
