@@ -4,9 +4,6 @@ import { Vacancy } from "../model/vacancy";
 export type VacFormProps = {
   vacancies: Vacancy[];
   onEditClick: (vacancy: Vacancy) => void;
-  onSubmit: (values: Vacancy) => void;
-  onSuccess?: () => void;
-  onCancel?: () => void;
 };
 
 export type VacAddViewProps = {

@@ -186,13 +186,10 @@ const VacAddView: React.FC<VacAddViewProps> = ({
             <Button type="primary" htmlType="submit">
               Отправить
             </Button>
-            <Button
-              type="default"
-              onClick={(e) => {
-                e.preventDefault();
-                resetForm();
-              }}
-            >
+            <Button type="default" onClick={(e) => {
+              e.preventDefault();
+              resetForm();
+              }}>
               Сбросить
             </Button>
           </Form>

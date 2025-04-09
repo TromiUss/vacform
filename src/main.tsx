@@ -57,9 +57,7 @@ const App = () => {
 
       <main className="page-main">
         <div className="page-body__container">
-          {mode === "view" && <VacForm vacancies={vacancies} onEditClick={handleEditClick} onSubmit={function (): void {
-            throw new Error("Function not implemented.");
-          } } />}
+          {mode === "view" && <VacForm vacancies={vacancies} onEditClick={handleEditClick} />}
           {mode === "add" && (
             <VacAddView
             initialValues={vacancies}
