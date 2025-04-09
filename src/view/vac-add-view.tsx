@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Button, DatePicker } from "antd";
 import dayjs from "dayjs";
-import type { VacFormProps } from "./vac-form-view.tsx";
+import { VacAddViewProps } from "../types/vac-form.types";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Обязательное поле"),
@@ -19,12 +19,12 @@ const validationSchema = Yup.object({
   salaryTo: Yup.number().nullable(),
 });
 
-const VacAddView: React.FC<VacFormProps> = ({
-  vacancies = [],
+const VacAddView: React.FC<VacAddViewProps> = ({
+  initialValues = [],
   onSubmit,
   onSuccess = () => {},
 }) => {
-  const initialVacancy = vacancies?.[0] || {};
+  const initialVacancy = initialValues?.[0] || {};
   const initialFormValues = {
     VacName: initialVacancy.VacName ?? "",
     Ot: initialVacancy.Ot ?? "",

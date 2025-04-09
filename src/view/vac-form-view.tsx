@@ -1,13 +1,5 @@
 import React from 'react';
-import { Vacancy } from '../model/vacancy';
-
-export type VacFormProps = {
-  vacancies: Vacancy[];
-  onEditClick: (vacancy: Vacancy) => void;
-  onSubmit: (values: Vacancy) => void;
-  onSuccess?: () => void;
-  onCancel?: () => void;
-};
+import { VacFormProps } from "../types/vac-form.types";
 
 const VacForm: React.FC<VacFormProps> = ({ vacancies = [], onEditClick }) => {
   if (vacancies.length === 0) {

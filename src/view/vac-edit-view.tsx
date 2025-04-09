@@ -3,8 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Button, DatePicker } from "antd";
 import dayjs from "dayjs";
-import type { VacFormProps } from "./vac-form-view.tsx";
-
+import { VacEditViewProps } from "../types/vac-form.types";
 
 const validationSchema = Yup.object({
   VacName: Yup.string().required('Обязательное поле'),
@@ -18,27 +17,28 @@ const validationSchema = Yup.object({
   employment_type: Yup.string().required('Обязательное поле')
 });
 
-const VacEditView: React.FC<VacFormProps> = ({
-  vacancies=[],
-  onSubmit,
-  onSuccess = () => {},
-  onCancel = () => {},
+const VacEditView: React.FC<VacEditViewProps> = ({
+  initialValues,
+  onUpdateVacancy,
+  onCancel,
+  setMode,
 }) => {
-  const initialVacancy = vacancies?.[0] || {};
+  const initialVacancy = initialValues?.[0] || {};
   const initialFormValues = {
-    VacName: initialVacancy.VacName ?? "",
-    Ot: initialVacancy.Ot ?? "",
-    salaryTo: initialVacancy.salaryTo ?? "",
-    salaryFrom: initialVacancy.salaryFrom ?? "",
-    salary: initialVacancy.salary ?? "",
-    address: initialVacancy.address ?? "",
-    underground: initialVacancy.underground ?? "",
-    date: initialVacancy.date ? dayjs(initialVacancy.date) : null,
-    PlanDate: initialVacancy.PlanDate ? dayjs(initialVacancy.PlanDate) : null,
-    gender: initialVacancy.gender ?? "",
-    experience: initialVacancy.experience ?? "",
-    gr: initialVacancy.gr ?? "",
-    employment_type: initialVacancy.employment_type ?? "",
+    VacName: initialValues.VacName ?? "",
+  Ot: initialValues.Ot ?? "",
+  salaryTo: initialValues.salaryTo ?? "",
+  salaryFrom: initialValues.salaryFrom ?? "",
+  salary: initialValues.salary ?? "",
+  address: initialValues.address ?? "",
+  underground: initialValues.underground ?? "",
+  date: initialValues.date ? dayjs(initialValues.date) : null,
+  PlanDate: initialValues.PlanDate ? dayjs(initialValues.PlanDate) : null,
+  gender: initialValues.gender ?? "",
+  experience: initialValues.experience ?? "",
+  gr: initialValues.gr ?? "",
+  employment_type: initialValues.employment_type ?? "",
+  skills: initialValues.experience ?? "",
   }
   return (
     <label>
@@ -55,7 +55,7 @@ const VacEditView: React.FC<VacFormProps> = ({
                 id: Date.now(),
                 publicationDate: new Date().toISOString(),
               };
-              onSubmit(parsedValues);
+              onUpdateVacancy(parsedValues);
               setSubmitting(false);
               onSuccess();
               onCancel();
