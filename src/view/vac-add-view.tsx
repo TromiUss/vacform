@@ -6,8 +6,8 @@ import dayjs from "dayjs";
 import { VacAddViewProps } from "../types/vac-form.types";
 
 const validationSchema = Yup.object({
-  name: Yup.string().required("Обязательное поле"),
-  ot: Yup.string().required("Обязательное поле"),
+  VacName: Yup.string().required("Обязательное поле"),
+  Ot: Yup.string().required("Обязательное поле"),
   date: Yup.date().required("Обязательное поле"),
   PlanDate: Yup.date().required("Обязательное поле"),
   gender: Yup.string().required("Обязательное поле"),
