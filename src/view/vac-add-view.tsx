@@ -58,7 +58,7 @@ const VacAddView: React.FC<VacAddViewProps> = ({
           };
           onSubmit(parsedValues);
           setSubmitting(false);
-          resetForm();
+          resetForm({ values: initialFormValues });
           onSuccess();
         }}
       >
