@@ -23,6 +23,7 @@ const VacAddView: React.FC<VacAddViewProps> = ({
   initialValues = [],
   onSubmit,
   onSuccess = () => {},
+  
 }) => {
   const initialVacancy = initialValues?.[0] || {};
   const initialFormValues = {
