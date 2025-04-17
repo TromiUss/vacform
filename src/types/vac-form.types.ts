@@ -1,4 +1,3 @@
-// src/types/vac-form.types.ts или src/model/vacancy-props.ts
 import { Vacancy } from "../model/vacancy";
 
 export type VacFormProps = {

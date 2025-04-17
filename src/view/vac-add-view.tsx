@@ -2,7 +2,6 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Button, DatePicker } from "antd";
-import dayjs from "dayjs";
 import { VacAddViewProps } from "../types/vac-form.types";
 
 const validationSchema = Yup.object({
@@ -20,26 +19,23 @@ const validationSchema = Yup.object({
 });
 
 const VacAddView: React.FC<VacAddViewProps> = ({
-  initialValues = [],
   onSubmit,
   onSuccess = () => {},
-  
 }) => {
-  const initialVacancy = initialValues?.[0] || {};
   const initialFormValues = {
-    VacName: initialVacancy.VacName ?? "",
-    Ot: initialVacancy.Ot ?? "",
-    salaryTo: initialVacancy.salaryTo ?? "",
-    salaryFrom: initialVacancy.salaryFrom ?? "",
-    salary: initialVacancy.salary ?? "",
-    address: initialVacancy.address ?? "",
-    underground: initialVacancy.underground ?? "",
-    date: initialVacancy.date ? dayjs(initialVacancy.date) : null,
-    PlanDate: initialVacancy.PlanDate ? dayjs(initialVacancy.PlanDate) : null,
-    gender: initialVacancy.gender ?? "",
-    experience: initialVacancy.experience ?? "",
-    gr: initialVacancy.gr ?? "",
-    employment_type: initialVacancy.employment_type ?? "",
+    VacName: "",
+    Ot: "",
+    salaryTo: "",
+    salaryFrom: "",
+    salary: "",
+    address: "",
+    underground: "",
+    date: null,
+    PlanDate: null,
+    gender: "",
+    experience: "",
+    gr: "",
+    employment_type: "",
   };
 
   return (
@@ -187,10 +183,13 @@ const VacAddView: React.FC<VacAddViewProps> = ({
             <Button type="primary" htmlType="submit">
               Отправить
             </Button>
-            <Button type="default" onClick={(e) => {
-              e.preventDefault();
-              resetForm();
-              }}>
+            <Button
+              type="default"
+              onClick={(e) => {
+                e.preventDefault();
+                resetForm();
+              }}
+            >
               Сбросить
             </Button>
           </Form>
