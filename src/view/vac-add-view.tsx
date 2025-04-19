@@ -48,8 +48,8 @@ const VacAddView: React.FC<VacAddViewProps> = ({
         onSubmit={(values, { setSubmitting, resetForm }) => {
           const parsedValues = {
             ...values,
-            date: values.date ? values.date.toISOString() : "",
-            PlanDate: values.PlanDate ? values.PlanDate.toISOString() : "",
+            date: values.date ? values.date : "",
+            PlanDate: values.PlanDate ? values.PlanDate : "",
             id: Date.now(),
             publicationDate: new Date().toISOString(),
           };
