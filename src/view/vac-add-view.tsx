@@ -51,7 +51,7 @@ const VacAddView: React.FC<VacAddViewProps> = ({
             date: values.date ? values.date : "",
             PlanDate: values.PlanDate ? values.PlanDate : "",
             id: Date.now(),
-            publicationDate: new Date().toISOString(),
+            publicationDate: new Date().toLocaleDateString("ru-RU")
           };
           onSubmit(parsedValues);
           setSubmitting(false);
@@ -64,14 +64,14 @@ const VacAddView: React.FC<VacAddViewProps> = ({
             <fieldset className="form-row-group">
               <label>
                 Наименование вакансии
-                <Field type="text" name="name" />
-                <ErrorMessage name="name" component="div" />
+                <Field type="text" name="VacName" />
+                <ErrorMessage name="VacName" component="div" />
               </label>
 
               <label>
                 Отдел
-                <Field type="text" name="ot" />
-                <ErrorMessage name="ot" component="div" />
+                <Field type="text" name="Ot" />
+                <ErrorMessage name="Ot" component="div" />
               </label>
             </fieldset>
 
