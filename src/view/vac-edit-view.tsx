@@ -135,13 +135,13 @@ const VacEditView: React.FC<VacEditViewProps> = ({
               </label>
 
               <label>Станция метро, МЦД
-                <Field type="text" name="under" />
+                <Field type="text" name="underground" />
               </label>
             </fieldset>
             <fieldset className="form-row-group">
               <label>Опыт работы
-                <Field type="text" name="skills" />
-                <ErrorMessage name="skills" component="div" />
+                <Field type="text" name="experience" />
+                <ErrorMessage name="experience" component="div" />
               </label>
 
               <label>График работы
