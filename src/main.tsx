@@ -9,11 +9,12 @@ import "./style.css";
 import "./global.css";
 import { Vacancy } from "@model/vacancy";
 
-const rootElement = document.getElementById('root')!;
+const rootElement = document.getElementById("root")!;
 const root = ReactDOM.createRoot(rootElement);
 
 const App = () => {
-  const { vacancies, handleAddVacancy, handleUpdateVacancy } = useVacancyViewModel();
+  const { vacancies, handleAddVacancy, handleUpdateVacancy } =
+    useVacancyViewModel();
   const [mode, setMode] = useState("view");
   const [selectedVacancy, setSelectedVacancy] = useState<Vacancy | null>(null);
   const [activeButton, setActiveButton] = useState<string | null>("view");
@@ -35,19 +36,23 @@ const App = () => {
   };
 
   return (
-    <>
+    <section>
       <header className="page-header">
         <div className="page-header__container">
           <div className="vac-link">
             <button
               onClick={handleViewClick}
-              className={`list-button ${activeButton === "view" ? "selected-button" : ""}`}
+              className={`list-button ${
+                activeButton === "view" ? "selected-button" : ""
+              }`}
             >
               Все заявки
             </button>
             <button
               onClick={handleAddClick}
-              className={`new-button ${activeButton === "add" ? "selected-button" : ""}`}
+              className={`new-button ${
+                activeButton === "add" ? "selected-button" : ""
+              }`}
             >
               Создание заявки
             </button>
@@ -57,10 +62,12 @@ const App = () => {
 
       <main className="page-main">
         <div className="page-body__container">
-          {mode === "view" && <VacForm vacancies={vacancies} onEditClick={handleEditClick} />}
+          {mode === "view" && (
+            <VacForm vacancies={vacancies} onEditClick={handleEditClick} />
+          )}
           {mode === "add" && (
             <VacAddView
-            initialValues={vacancies}
+              initialValues={vacancies}
               onSubmit={handleAddVacancy}
               onSuccess={() => setMode("view")}
             />
@@ -89,7 +96,7 @@ const App = () => {
           )}
         </div>
       </main>
-    </>
+    </section>
   );
 };
 
