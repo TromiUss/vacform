@@ -1,6 +1,6 @@
 export enum AppRoute {
   Main ='/',
-  Vacancy = '/vacancy/:id',
+  VacAdd = '/vacancy/:id',
   VacancyEdit = '/vacancy-edit/:id',
 }
 

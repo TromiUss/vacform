@@ -1,5 +1,6 @@
 import { JSX, useState } from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AppRoute } from "../const/const";
 import { useVacancyViewModel } from "../vac-form-viewmodel";
 import VacForm from "../view/vac-form-view";
 import VacAddView from "../view/vac-add-view";
@@ -38,17 +39,15 @@ const App = (): JSX.Element => {
               <div className="vac-link">
                 <button
                   onClick={handleViewClick}
-                  className={`list-button ${
-                    activeButton === "view" ? "selected-button" : ""
-                  }`}
+                  className={`list-button ${activeButton === "view" ? "selected-button" : ""
+                    }`}
                 >
                   Все заявки
                 </button>
                 <button
                   onClick={handleAddClick}
-                  className={`new-button ${
-                    activeButton === "add" ? "selected-button" : ""
-                  }`}
+                  className={`new-button ${activeButton === "add" ? "selected-button" : ""
+                    }`}
                 >
                   Создание заявки
                 </button>
@@ -59,35 +58,41 @@ const App = (): JSX.Element => {
           <main className="page-main">
             <div className="page-body__container">
               {mode === "view" && (
-                <VacForm vacancies={vacancies} onEditClick={handleEditClick} />
+                <Route
+                  index
+                  path={AppRoute.Main}
+                  element={<VacForm vacancies={vacancies} onEditClick={handleEditClick} />}
+                />
               )}
               {mode === "add" && (
-                <VacAddView
-                  initialValues={vacancies}
-                  onSubmit={handleAddVacancy}
-                  onSuccess={() => setMode("view")}
+                <Route
+                  path={AppRoute.VacAdd}
+                  element={<VacAddView initialValues={vacancies} onSubmit={handleAddVacancy} onSuccess={() => setMode("view")} />}
                 />
               )}
               {mode === "edit" && (
-                <VacEditView
-                  initialValues={{
-                    VacName: selectedVacancy?.VacName || "",
-                    Ot: selectedVacancy?.Ot || "",
-                    salaryFrom: selectedVacancy?.salaryFrom || "",
-                    salary: selectedVacancy?.salary || "",
-                    salaryTo: selectedVacancy?.salaryTo || "",
-                    address: selectedVacancy?.address || "",
-                    underground: selectedVacancy?.underground || "",
-                    date: selectedVacancy?.date || "",
-                    PlanDate: selectedVacancy?.PlanDate || "",
-                    gender: selectedVacancy?.gender || "",
-                    experience: selectedVacancy?.experience || "",
-                    gr: selectedVacancy?.gr || "",
-                    employment_type: selectedVacancy?.employment_type || "",
-                  }}
-                  onUpdateVacancy={handleUpdateVacancy}
-                  onCancel={() => setMode("view")}
-                  setMode={setMode}
+                <Route
+                  path={AppRoute.VacancyEdit}
+                  element={<VacEditView
+                    initialValues={{
+                      VacName: selectedVacancy?.VacName || "",
+                      Ot: selectedVacancy?.Ot || "",
+                      salaryFrom: selectedVacancy?.salaryFrom || "",
+                      salary: selectedVacancy?.salary || "",
+                      salaryTo: selectedVacancy?.salaryTo || "",
+                      address: selectedVacancy?.address || "",
+                      underground: selectedVacancy?.underground || "",
+                      date: selectedVacancy?.date || "",
+                      PlanDate: selectedVacancy?.PlanDate || "",
+                      gender: selectedVacancy?.gender || "",
+                      experience: selectedVacancy?.experience || "",
+                      gr: selectedVacancy?.gr || "",
+                      employment_type: selectedVacancy?.employment_type || "",
+                    }}
+                    onUpdateVacancy={handleUpdateVacancy}
+                    onCancel={() => setMode("view")}
+                    setMode={setMode}
+                  />}
                 />
               )}
             </div>
