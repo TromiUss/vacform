@@ -1,4 +1,5 @@
 import React from "react";
+import { VacEditViewProps } from "../types/vac-form.types";
 import VacancyForm from "../components/vacancyForm";
 
 const VacEditView: React.FC<VacEditViewProps> = ({
