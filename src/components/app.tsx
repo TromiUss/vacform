@@ -1,5 +1,5 @@
 import { JSX, useState } from "react";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import { AppRoute } from "../const/const";
 import { useVacancyViewModel } from "../vac-form-viewmodel";
 import VacForm from "../view/vac-form-view";
@@ -14,15 +14,6 @@ const App = (): JSX.Element => {
   const [selectedVacancy, setSelectedVacancy] = useState<Vacancy | null>(null);
   const [activeButton, setActiveButton] = useState<string | null>("view");
 
-  const handleViewClick = () => {
-    setMode("view");
-    setActiveButton("view");
-  };
-
-  const handleAddClick = () => {
-    setMode("add");
-    setActiveButton("add");
-  };
 
   const handleEditClick = (vacancy: Vacancy) => {
     setSelectedVacancy(vacancy);
@@ -32,73 +23,50 @@ const App = (): JSX.Element => {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <section>
-          <header className="page-header">
-            <div className="page-header__container">
-              <div className="vac-link">
-                <button
-                  onClick={handleViewClick}
-                  className={`list-button ${activeButton === "view" ? "selected-button" : ""
-                    }`}
-                >
-                  Все заявки
-                </button>
-                <button
-                  onClick={handleAddClick}
-                  className={`new-button ${activeButton === "add" ? "selected-button" : ""
-                    }`}
-                >
-                  Создание заявки
-                </button>
-              </div>
+      <section>
+        <header className="page-header">
+          <div className="page-header__container">
+            <div className="vac-link">
+              <Link to={AppRoute.Main} className="list-button">
+                Все заявки
+              </Link>
+              <Link to={AppRoute.VacAdd} className="new-button">
+                Создание заявки
+              </Link>
             </div>
-          </header>
+          </div>
+        </header>
 
-          <main className="page-main">
-            <div className="page-body__container">
-              {mode === "view" && (
-                <Route
-                  index
-                  path={AppRoute.Main}
-                  element={<VacForm vacancies={vacancies} onEditClick={handleEditClick} />}
-                />
-              )}
-              {mode === "add" && (
-                <Route
-                  path={AppRoute.VacAdd}
-                  element={<VacAddView initialValues={vacancies} onSubmit={handleAddVacancy} onSuccess={() => setMode("view")} />}
-                />
-              )}
-              {mode === "edit" && (
-                <Route
-                  path={AppRoute.VacancyEdit}
-                  element={<VacEditView
-                    initialValues={{
-                      VacName: selectedVacancy?.VacName || "",
-                      Ot: selectedVacancy?.Ot || "",
-                      salaryFrom: selectedVacancy?.salaryFrom || "",
-                      salary: selectedVacancy?.salary || "",
-                      salaryTo: selectedVacancy?.salaryTo || "",
-                      address: selectedVacancy?.address || "",
-                      underground: selectedVacancy?.underground || "",
-                      date: selectedVacancy?.date || "",
-                      PlanDate: selectedVacancy?.PlanDate || "",
-                      gender: selectedVacancy?.gender || "",
-                      experience: selectedVacancy?.experience || "",
-                      gr: selectedVacancy?.gr || "",
-                      employment_type: selectedVacancy?.employment_type || "",
-                    }}
-                    onUpdateVacancy={handleUpdateVacancy}
-                    onCancel={() => setMode("view")}
-                    setMode={setMode}
-                  />}
-                />
-              )}
-            </div>
-          </main>
-        </section>
-      </Routes>
+
+        <main className="page-main">
+          <div className="page-body__container">
+            <Routes>
+              <Route path={AppRoute.Main} element={<VacForm vacancies={vacancies} onEditClick={handleEditClick} />} />
+              <Route path={AppRoute.VacAdd} element={<VacAddView initialValues={vacancies} onSubmit={handleAddVacancy} onSuccess={() => setMode("view")} />} />
+              <Route path={AppRoute.VacancyEdit} element={<VacEditView
+                initialValues={{
+                  VacName: selectedVacancy?.VacName || "",
+                  Ot: selectedVacancy?.Ot || "",
+                  salaryFrom: selectedVacancy?.salaryFrom || "",
+                  salary: selectedVacancy?.salary || "",
+                  salaryTo: selectedVacancy?.salaryTo || "",
+                  address: selectedVacancy?.address || "",
+                  underground: selectedVacancy?.underground || "",
+                  date: selectedVacancy?.date || "",
+                  PlanDate: selectedVacancy?.PlanDate || "",
+                  gender: selectedVacancy?.gender || "",
+                  experience: selectedVacancy?.experience || "",
+                  gr: selectedVacancy?.gr || "",
+                  employment_type: selectedVacancy?.employment_type || "",
+                }}
+                onUpdateVacancy={handleUpdateVacancy}
+                onCancel={() => setMode("view")}
+                setMode={setMode}
+              />}/>
+            </Routes>
+          </div>
+        </main>
+      </section>
     </BrowserRouter>
   );
 };
