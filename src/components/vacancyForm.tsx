@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Button, DatePicker } from "antd";
 import dayjs from "dayjs";
-import { Vacancy } from "@model/vacancy";
+import { Vacancy } from "../model/vacancy";
 
 type Mode = "add" | "edit";
 
@@ -34,30 +34,64 @@ const VacancyForm: React.FC<VacancyFormProps> = ({
     onSubmit,
     onCancel,
 }) => {
-    let initialFormValues = {};
+    let initialFormValues: Vacancy = {
+    id: 0, // Начальное значение
+    VacName: "",
+    Ot: "",
+    salary: "",
+    salaryFrom: "",
+    salaryTo: "",
+    date: "",
+    PlanDate: "",
+    gender: "",
+    experience: "",
+    address: "",
+    underground: "",
+    gr: "",
+    employment_type: "",
+    publicationDate: "",
+};
 
-    switch (mode) {
-        case "add":
-            initialFormValues = {
-                VacName: "",
-                Ot: "",
-                salaryTo: "",
-                salaryFrom: "",
-                salary: "",
-                address: "",
-                underground: "",
-                date: null,
-                PlanDate: null,
-                gender: "",
-                experience: "",
-                gr: "",
-                employment_type: "",
-            };
-            break;
-        case "edit":
-            initialFormValues = initialValues || {};
-            break;
-    }
+switch (mode) {
+    case "add":
+        initialFormValues = {
+            id: 0,
+            VacName: "",
+            Ot: "",
+            salaryTo: "",
+            salaryFrom: "",
+            salary: "",
+            address: "",
+            underground: "",
+            date: "",
+            PlanDate: "",
+            gender: "",
+            experience: "",
+            gr: "",
+            employment_type: "",
+            publicationDate: "",
+        };
+        break;
+    case "edit":
+        initialFormValues = initialValues || {
+            id: 0,
+            VacName: "",
+            Ot: "",
+            salaryTo: "",
+            salaryFrom: "",
+            salary: "",
+            address: "",
+            underground: "",
+            date: "",
+            PlanDate: "",
+            gender: "",
+            experience: "",
+            gr: "",
+            employment_type: "",
+            publicationDate: "",
+        };
+        break;
+}
 
     return (
         <Formik
@@ -67,8 +101,8 @@ const VacancyForm: React.FC<VacancyFormProps> = ({
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 const parsedValues = {
                     ...values,
-                    date: values.date ? values.date.toISOString() : "",
-                    PlanDate: values.PlanDate ? values.PlanDate.toISOString() : "",
+                    date: values.date ? values.date.toString() : "",
+                    PlanDate: values.PlanDate ? values.PlanDate.toString() : "",
                 };
                 onSubmit(parsedValues);
                 setSubmitting(false);
@@ -76,7 +110,7 @@ const VacancyForm: React.FC<VacancyFormProps> = ({
                 onCancel?.();
             }}
         >
-            {({ values, errors, touched, isSubmitting, setFieldValue, setTouched, resetForm }) => (
+            {({ values, touched, isSubmitting, setFieldValue, setTouched, resetForm }) => (
                 <Form className="add-vac__form">
                     <fieldset className="form-row-group">
                         <label>
