@@ -12,7 +12,7 @@ const App = (): JSX.Element => {
     useVacancyViewModel();
   const [mode, setMode] = useState("view");
   const [selectedVacancy, setSelectedVacancy] = useState<Vacancy | null>(null);
-  const [activeButton, setActiveButton] = useState<string | null>("view");
+  const [setActiveButton] = useState<string | null>("view");
 
 
   const handleEditClick = (vacancy: Vacancy) => {
